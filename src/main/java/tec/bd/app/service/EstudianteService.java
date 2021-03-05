@@ -18,20 +18,38 @@ public class EstudianteService {
     }
 
     public Estudiante getById(long carne){
-        return this.database.getEstudianteTable().stream().filter(e -> e.getCarne() == carne).findFirst().get();
+        try {
+            return this.database.getEstudianteTable().stream().filter(e -> e.getCarne() == carne).findFirst().get();
+        } catch (Exception e) {
+            System.out.println("Error: There's no student registered with the id: "+carne);
+            return null;
+        }
+
     }
 
     public void addNew(Estudiante e){
-        // Verificar si el estudiante que viene por parametro ya existe en la BD
-        this.database.getEstudianteTable().add(e);
+        try{
+            this.database.getEstudianteTable().stream().filter(ne -> ne.getCarne() == e.getCarne()).findFirst().get();
+            System.out.println("Error: already existent student with the id: "+e.getCarne());
+        } catch (Exception exception) {
+            this.database.getEstudianteTable().add(e);
+            System.out.println("Student added successfully");
+        }
     }
 
     public void updateEstudiante(Estudiante e){
-
+        try{
+            this.database.getEstudianteTable().stream().filter(ne -> ne.getCarne() == e.getCarne()).findFirst().get().setNombre(e.getNombre());
+            this.database.getEstudianteTable().stream().filter(ne -> ne.getCarne() == e.getCarne()).findFirst().get().setApellido(e.getApellido());
+            this.database.getEstudianteTable().stream().filter(ne -> ne.getCarne() == e.getCarne()).findFirst().get().setEdad(e.getEdad());
+            System.out.println("Student updated successfully");
+        } catch (Exception exception) {
+            System.out.println("Error: There's no student registered with the id: " + e.getCarne());
+        }
     }
 
     public void deleteEstudiante(long carne){
-
+        
     }
 
 }

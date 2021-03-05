@@ -26,9 +26,15 @@ public class EstudianteServiceTest {
     }
 
     @Test
-    public void getById() throws Exception{
+    public void getById_ExistingId() throws Exception{
         var estudiante = this.estudianteService.getById(1);
+
         assertThat(estudiante.getNombre()).isEqualTo("Juan");
+    }
+
+    @Test
+    public void getById_NonExistingId() throws Exception{
+        var estudiante = this.estudianteService.getById(0);
     }
 
     @Test
@@ -48,7 +54,7 @@ public class EstudianteServiceTest {
     }
 
     @Test
-    public void addNewStudent() throws Exception{
+    public void addNewStudent_NonExistentStudentId() throws Exception{
         var karol = new Estudiante(2, "Karol", "Arguedas",21);
         estudianteService.addNew(karol);
 
@@ -58,13 +64,34 @@ public class EstudianteServiceTest {
     }
 
     @Test
+    public void addNewStudent_ExistentStudentId() throws Exception{
+        var karol = new Estudiante(1, "Karol", "Arguedas",21);
+        estudianteService.addNew(karol);
+
+        var estudiantes = this.estudianteService.getAll();
+
+        assertThat(estudiantes).hasSize(3);
+    }
+
+    @Test
     public void deleteStudent() throws Exception{
 
     }
 
     @Test
-    public void updateStudent() throws Exception{
+    public void updateStudent_ExistentStudentId() throws Exception{
+        var Juanda = new Estudiante(1,"Juanda", "Perez",22);
+        estudianteService.updateEstudiante(Juanda);
 
+        var estudiante = this.estudianteService.getById(1);
+
+        assertThat(estudiante.getNombre()).isEqualTo(Juanda.getNombre());
+    }
+
+    @Test
+    public void updateStudent_NonExistentStudentId() throws Exception{
+        var Juanda = new Estudiante(0,"Juanda", "Perez",22);
+        estudianteService.updateEstudiante(Juanda);
     }
 
 }

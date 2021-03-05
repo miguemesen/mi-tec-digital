@@ -1,4 +1,4 @@
-package tec.bd.app.service;
+package tec.bd.app.domain;
 
 public class Estudiante {
 

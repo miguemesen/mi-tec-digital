@@ -3,6 +3,7 @@ package tec.bd.app.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tec.bd.app.bd.SetDB;
+import tec.bd.app.domain.Estudiante;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -74,8 +75,17 @@ public class EstudianteServiceTest {
     }
 
     @Test
-    public void deleteStudent() throws Exception{
+    public void deleteStudent_ExistentStudentId() throws Exception{
+        estudianteService.deleteEstudiante(1);
 
+        assertThat(estudianteService.getById(1)).isNull();
+    }
+
+    @Test
+    public void deleteStudent_NonExistentStudentId() throws Exception{
+        estudianteService.deleteEstudiante(0);
+
+        assertThat(estudianteService.getById(0)).isNull();
     }
 
     @Test

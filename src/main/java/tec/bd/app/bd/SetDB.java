@@ -1,6 +1,6 @@
 package tec.bd.app.bd;
 
-import tec.bd.app.service.Estudiante;
+import tec.bd.app.domain.Estudiante;
 
 import java.util.Set;
 

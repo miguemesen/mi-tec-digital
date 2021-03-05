@@ -1,8 +1,11 @@
 package tec.bd.app.service;
 
 import tec.bd.app.bd.SetDB;
+import tec.bd.app.domain.Estudiante;
 
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class EstudianteService {
@@ -49,7 +52,12 @@ public class EstudianteService {
     }
 
     public void deleteEstudiante(long carne){
-        
+        try {
+            database.getEstudianteTable().remove(this.database.getEstudianteTable().stream().filter(ne -> ne.getCarne() == carne).findFirst().get());
+            System.out.println("Student removed successfully");
+        } catch (Exception e) {
+            System.out.println("Error: There's no student registered with the id: " + carne);
+        }
     }
 
 }

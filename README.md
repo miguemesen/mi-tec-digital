@@ -6,7 +6,6 @@ Miguel Mesen Molina
 ## Carné
 2019227371
 
-
 ## Revisión de tarea 1
 
 Nota 10

@@ -1,2 +1,6 @@
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/test/java/tec/bd/app/AppTest.java
-/Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/test/java/tec/bd/app/service/EstudianteServiceTest.java
+/Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/test/java/tec/bd/app/database/set/RowTest.java
+/Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/test/java/tec/bd/app/dao/EstudianteDAOImplTest.java
+/Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/test/java/tec/bd/app/dao/GenericSetDAOImplTest.java
+/Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/test/java/tec/bd/app/service/EstudianteServiceImplTest.java
+/Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/test/java/tec/bd/app/database/set/SetDBTest.java

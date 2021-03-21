@@ -1,3 +1,10 @@
-tec/bd/app/service/EstudianteServiceTest$1.class
-tec/bd/app/service/EstudianteServiceTest.class
+tec/bd/app/dao/GenericSetDAOImplTest.class
+tec/bd/app/dao/EstudianteDAOImplTest$1.class
+tec/bd/app/dao/GenericSetDAOImplTest$1.class
+tec/bd/app/database/set/RowTest.class
+tec/bd/app/dao/GenericSetDAOImplTest$Greeting.class
+tec/bd/app/service/EstudianteServiceImplTest.class
+tec/bd/app/database/set/SetDBTest.class
 tec/bd/app/AppTest.class
+tec/bd/app/dao/GenericSetDAOImplTest$2.class
+tec/bd/app/dao/EstudianteDAOImplTest.class

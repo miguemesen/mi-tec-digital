@@ -15,7 +15,7 @@ public class SetDB {
     }
 
     public <T> Set<Row> getTableByClassName(Class<T> clazz) {
-        if (clazz.isAssignableFrom(Entity.class)){
+        if (this.tables.containsKey(clazz)){
             return this.tables.get(clazz);
         }
         return Collections.emptySet();

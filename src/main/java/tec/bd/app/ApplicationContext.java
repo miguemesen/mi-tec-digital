@@ -1,19 +1,14 @@
 package tec.bd.app;
 
-import tec.bd.app.dao.CursoDAO;
-import tec.bd.app.dao.CursoDAOImpl;
-import tec.bd.app.dao.EstudianteDAO;
-import tec.bd.app.dao.EstudianteDAOImpl;
+import tec.bd.app.dao.*;
 import tec.bd.app.database.set.Row;
 import tec.bd.app.database.set.RowAttribute;
 import tec.bd.app.database.set.SetDB;
 import tec.bd.app.domain.Curso;
 import tec.bd.app.domain.Entity;
 import tec.bd.app.domain.Estudiante;
-import tec.bd.app.service.CursoService;
-import tec.bd.app.service.CursoServiceImpl;
-import tec.bd.app.service.EstudianteService;
-import tec.bd.app.service.EstudianteServiceImpl;
+import tec.bd.app.domain.Profesor;
+import tec.bd.app.service.*;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -28,6 +23,9 @@ public class ApplicationContext {
     private CursoDAO cursoSetDAO;
     private CursoService cursoService;
 
+    private ProfesorDAO profesorSetDAO;
+    private ProfesorService profesorService;
+
     private ApplicationContext() {
 
     }
@@ -39,6 +37,8 @@ public class ApplicationContext {
         applicationContext.estudianteServiceSet = initEstudianteSetService(applicationContext.estudianteSetDAO);
         applicationContext.cursoSetDAO = initCursoSetDAO(applicationContext.setDB);
         applicationContext.cursoService = initCursoService(applicationContext.cursoSetDAO);
+        applicationContext.profesorSetDAO = initProfesorSetDAO(applicationContext.setDB);
+        applicationContext.profesorService = initProfesorService(applicationContext.profesorSetDAO);
         return applicationContext;
     }
 
@@ -72,6 +72,23 @@ public class ApplicationContext {
         // Registros de la tabla curso
         // ---------------------------------------------------------------
 
+        var basesDeDatosId = new RowAttribute("id", 1);
+        var basesDeDatosNombre = new RowAttribute("nombre", "Bases de Datos");
+        var basesDeDatosDepartamento = new RowAttribute("departamento", "Informatica");
+        var basesDeDatosCreditos = new RowAttribute("creditos", 4);
+        var basesDeDatos = new Row(new RowAttribute[]{ basesDeDatosId,basesDeDatosNombre,basesDeDatosDepartamento,basesDeDatosCreditos});
+
+        var geneticaId = new RowAttribute("id", 10);
+        var geneticaNombre = new RowAttribute("nombre", "Genetica");
+        var geneticaDepartamento = new RowAttribute("departamento", "Biologia");
+        var geneticaCreditos = new RowAttribute("creditos", 4);
+        var genetica = new Row(new RowAttribute[]{ geneticaId,geneticaNombre,geneticaDepartamento,geneticaCreditos});
+
+        var introBioId = new RowAttribute("id", 20);
+        var introBioNombre = new RowAttribute("nombre", "Intro Biologia");
+        var introBioDepartamento = new RowAttribute("departamento", "Biologia");
+        var introBioCreditos = new RowAttribute("creditos", 4);
+        var introBio = new Row(new RowAttribute[]{ introBioId,introBioNombre,introBioDepartamento,introBioCreditos});
 
         // ---------------------------------------------------------------
         // Registros de la tabla profesor
@@ -88,7 +105,11 @@ public class ApplicationContext {
         }});
 
         // Agregar las filas de curso y estudiante a tables
-        // tables.put(Curso.class, new HashSet<>() {{ ... }}
+        tables.put(Curso.class, new HashSet<>(){{
+            add(basesDeDatos);
+            add(genetica);
+            add(introBio);
+        }});
         // tables.put(Profesor.class, new HashSet<>() {{ ... }}
 
         return new SetDB(tables);
@@ -108,6 +129,14 @@ public class ApplicationContext {
 
     private static CursoService initCursoService(CursoDAO cursoDAO){
         return new CursoServiceImpl(cursoDAO);
+    }
+
+    private static ProfesorDAO initProfesorSetDAO(SetDB setDB){
+        return new ProfesorDAOImpl(setDB, Profesor.class);
+    }
+
+    private static ProfesorService initProfesorService(ProfesorDAO profesorDAO){
+        return new ProfesorServiceImpl(profesorDAO);
     }
 
 
@@ -131,4 +160,11 @@ public class ApplicationContext {
         return this.cursoService;
     }
 
+    public ProfesorDAO getProfesorSetDAO() {
+        return profesorSetDAO;
+    }
+
+    public ProfesorService getProfesorService() {
+        return profesorService;
+    }
 }

@@ -20,6 +20,7 @@ public class App  {
         ApplicationContext applicationContext = ApplicationContext.init();
         var estudianteService = applicationContext.getEstudianteServiceSet();
         var cursoService = applicationContext.getCursoService();
+        var profesorService = applicationContext.getProfesorService();
 
         Options options = new Options();
 
@@ -211,6 +212,7 @@ public class App  {
 
             } else if(cmd.hasOption("erln")) {
                 // Ver todos los estudiantes ordenados por apellido
+
                 System.out.println("IMPLEMENTAR: Ver todos los estudiantes ordenados por apellido");
 
             } else if(cmd.hasOption("eln")) {

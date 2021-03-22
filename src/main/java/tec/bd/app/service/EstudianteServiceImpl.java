@@ -4,6 +4,7 @@ package tec.bd.app.service;
 import tec.bd.app.dao.EstudianteDAO;
 import tec.bd.app.domain.Estudiante;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,10 +23,11 @@ public class EstudianteServiceImpl implements EstudianteService {
 
     @Override
     public Optional<Estudiante> getById(int carne) {
+        if (carne > 0){
+            return this.estudianteDAO.findById(carne);
+        }
+        return Optional.empty();
 
-        //TODO: validar el carne > 0. Si no cumple con eso se devuelve Optional.empty()
-
-        return this.estudianteDAO.findById(carne);
     }
 
     public void addNew(Estudiante e) {
@@ -36,12 +38,13 @@ public class EstudianteServiceImpl implements EstudianteService {
     }
 
     public Optional<Estudiante> updateStudent(Estudiante e) {
-        //TODO: validar que el carne exista en la BD. Si existe se actualiza
-        return this.estudianteDAO.update(e);
+        if (estudianteDAO.findById(e.getCarne()).isPresent()){
+            return this.estudianteDAO.update(e);
+        }
+        return Optional.empty();
     }
 
     public void deleteStudent(int carne) {
-        //TODO: validar que el carne exista en la BD. Si existe se borra
         this.estudianteDAO.delete(carne);
     }
 
@@ -51,9 +54,10 @@ public class EstudianteServiceImpl implements EstudianteService {
 
     @Override
     public List<Estudiante> getStudentsByLastName(String lastName) {
-        //TODO: implementarlo
-        //validar que el lastName no sea nulo
-        return null;
+        if (!estudianteDAO.findByLastName(lastName).isEmpty()){
+            return this.estudianteDAO.findByLastName(lastName);
+        }
+        return Collections.emptyList();
     }
 
 }

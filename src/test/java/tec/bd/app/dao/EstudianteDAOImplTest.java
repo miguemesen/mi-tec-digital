@@ -111,7 +111,6 @@ public class EstudianteDAOImplTest {
     @Test
     public void findByLastName2() throws Exception {
         var estudiantes = this.estudianteDAO.findByLastName("Perez");
-
         assertThat(estudiantes.size()).isEqualTo(2);
     }
 
@@ -119,14 +118,10 @@ public class EstudianteDAOImplTest {
     public void findAllSortedByLastName() throws Exception {
         var estudiantes = this.estudianteDAO.findAllSortByLastName();
 
-        for (Estudiante estudiante : estudiantes){
-            System.out.println(estudiante.getNombre());
-        }
-
-//        assertThat(estudiantes.get(0).getApellido()).isEqualTo("Infante");
-//        assertThat(estudiantes.get(1).getApellido()).isEqualTo("Perez");
-//        assertThat(estudiantes.get(2).getApellido()).isEqualTo("Perez");
-//        assertThat(estudiantes.get(3).getApellido()).isEqualTo("Rojas");
+        assertThat(estudiantes.get(0).getApellido()).isEqualTo("Infante");
+        assertThat(estudiantes.get(1).getApellido()).isEqualTo("Perez");
+        assertThat(estudiantes.get(2).getApellido()).isEqualTo("Perez");
+        assertThat(estudiantes.get(3).getApellido()).isEqualTo("Rojas");
 
     }
 

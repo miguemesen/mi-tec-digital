@@ -48,9 +48,9 @@ public class EstudianteServiceImpl implements EstudianteService {
 
     @Override
     public void deleteStudent(int carne) {
-        if (this.estudianteDAO.findById(carne).isEmpty()){
-            return;
-        }
+//        if (this.estudianteDAO.findById(carne).isEmpty()){
+//            return;
+//        }
         this.estudianteDAO.delete(carne);
     }
 

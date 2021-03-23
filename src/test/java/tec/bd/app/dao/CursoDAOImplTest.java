@@ -7,6 +7,7 @@ import tec.bd.app.database.set.RowAttribute;
 import tec.bd.app.database.set.SetDB;
 import tec.bd.app.domain.Curso;
 import tec.bd.app.domain.Entity;
+import tec.bd.app.domain.Estudiante;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -49,11 +50,58 @@ public class CursoDAOImplTest {
         this.cursoDAO = new CursoDAOImpl(setDb, Curso.class);
     }
 
+
     @Test
-    public void findByDepartment() throws Exception {
-        var actual = this.cursoDAO.findByDepartment("Biologia");
-
-        assertThat(actual).hasSize(2);
-
+    public void findAll() throws Exception {
+        var actual = this.cursoDAO.findAll();
+        assertThat(actual).hasSize(3);
     }
+
+    @Test
+    public void findById() throws Exception {
+        var curso = this.cursoDAO.findById(1);
+        assertThat(curso.get().getId()).isEqualTo(1);
+        assertThat(curso.get().getNombre()).isEqualTo("Bases de Datos");
+        assertThat(curso.get().getDepartamento()).isEqualTo("Informatica");
+        assertThat(curso.get().getCreditos()).isEqualTo(4);
+    }
+
+    @Test
+    public void save() throws Exception {
+        this.cursoDAO.save(new Curso(40, "Fisica", "Fisica", 4));
+        var curso = this.cursoDAO.findById(40);
+        assertThat(this.cursoDAO.findAll()).hasSize(4);
+        assertThat(curso.isPresent()).isTrue();
+        assertThat(curso.get().getId()).isEqualTo(40);
+        assertThat(curso.get().getNombre()).isEqualTo("Fisica");
+        assertThat(curso.get().getDepartamento()).isEqualTo("Fisica");
+        assertThat(curso.get().getCreditos()).isEqualTo(4);
+    }
+
+    @Test
+    public void update() throws Exception {
+        var current = this.cursoDAO.findById(1);
+        current.get().setDepartamento("Matematica");
+        current.get().setCreditos(3);
+        var actual = this.cursoDAO.update(current.get());
+        assertThat(this.cursoDAO.findAll()).hasSize(3);
+        assertThat(actual.get().getId()).isEqualTo(1);
+        assertThat(actual.get().getNombre()).isEqualTo("Bases de Datos");
+        assertThat(actual.get().getDepartamento()).isEqualTo("Matematica");
+        assertThat(actual.get().getCreditos()).isEqualTo(3);
+    }
+
+    @Test
+    public void delete() throws Exception {
+        this.cursoDAO.delete(1);
+        assertThat(this.cursoDAO.findAll()).hasSize(2);
+    }
+
+    @Test
+    public void findByDepartamento() throws Exception {
+        var curso1 = this.cursoDAO.findByDepartment("Informatica");
+        assertThat(curso1.get(0).getNombre()).isEqualTo("Bases de Datos");
+    }
+
+
 }

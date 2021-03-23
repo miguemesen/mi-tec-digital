@@ -48,9 +48,9 @@ public class CursoServiceImpl implements CursoService{
 
     @Override
     public void deleteCurso(int id) {
-        if (this.cursoDAO.findById(id).isEmpty()){
-            return;
-        }
+//        if (this.cursoDAO.findById(id).isEmpty()){
+//            return;
+//        }
         this.cursoDAO.delete(id);
     }
 

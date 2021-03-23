@@ -45,9 +45,9 @@ public class ProfesorServiceImpl implements ProfesorService{
 
     @Override
     public void deleteProfesor(int id) {
-        if (this.profesorDAO.findById(id).isEmpty()){
-            return;
-        }
+//        if (this.profesorDAO.findById(id).isEmpty()){
+//            return;
+//        }
         this.profesorDAO.delete(id);
     }
 

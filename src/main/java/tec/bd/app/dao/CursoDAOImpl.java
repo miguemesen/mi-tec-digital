@@ -16,12 +16,11 @@ public class CursoDAOImpl extends GenericSetDAOImpl<Curso, Integer> implements C
 
     @Override
     protected Curso rowToEntity(Row row) {
-        Curso curso = new Curso();
-        curso.setId(row.intAttributeValue("id"));
-        curso.setNombre(row.stringAttributeValue("nombre"));
-        curso.setDepartamento(row.stringAttributeValue("departamento"));
-        curso.setCreditos(row.intAttributeValue("creditos"));
-        return curso;
+        var id = row.intAttributeValue("id");
+        var nombre = row.stringAttributeValue("nombre");
+        var departamento = row.stringAttributeValue("departamento");
+        var creditos = row.intAttributeValue("creditos");
+        return new Curso(id,nombre,departamento,creditos);
     }
 
     @Override

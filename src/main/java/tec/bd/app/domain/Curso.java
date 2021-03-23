@@ -7,8 +7,11 @@ public class Curso implements Entity{
     private String departamento;
     private int creditos;
 
-    public Curso(){
-
+    public Curso(int id, String nombre, String departamento, int creditos) {
+        this.id = id;
+        this.nombre = nombre;
+        this.departamento = departamento;
+        this.creditos = creditos;
     }
 
     public int getId() {

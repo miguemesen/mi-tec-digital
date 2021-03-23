@@ -5,6 +5,7 @@ tec/bd/app/service/CursoServiceImpl.class
 tec/bd/app/domain/Estudiante.class
 tec/bd/app/database/set/RowAttribute.class
 tec/bd/app/domain/Profesor.class
+tec/bd/app/ApplicationContext$3.class
 tec/bd/app/database/set/SetDB.class
 tec/bd/app/domain/Curso.class
 tec/bd/app/service/CursoService.class

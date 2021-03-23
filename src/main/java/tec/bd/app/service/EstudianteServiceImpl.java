@@ -30,6 +30,7 @@ public class EstudianteServiceImpl implements EstudianteService {
 
     }
 
+    @Override
     public void addNew(Estudiante e) {
         Optional<Estudiante> estudiante = this.estudianteDAO.findById(e.getCarne());
         if(!estudiante.isPresent()) {
@@ -37,6 +38,7 @@ public class EstudianteServiceImpl implements EstudianteService {
         }
     }
 
+    @Override
     public Optional<Estudiante> updateStudent(Estudiante e) {
         if (estudianteDAO.findById(e.getCarne()).isPresent()){
             return this.estudianteDAO.update(e);
@@ -44,10 +46,15 @@ public class EstudianteServiceImpl implements EstudianteService {
         return Optional.empty();
     }
 
+    @Override
     public void deleteStudent(int carne) {
+        if (this.estudianteDAO.findById(carne).isEmpty()){
+            return;
+        }
         this.estudianteDAO.delete(carne);
     }
 
+    @Override
     public List<Estudiante> getStudentsSortedByLastName() {
         return this.estudianteDAO.findAllSortByLastName();
     }

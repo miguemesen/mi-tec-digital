@@ -8,9 +8,7 @@ import tec.bd.app.database.set.SetDB;
 import tec.bd.app.domain.Entity;
 import tec.bd.app.domain.Estudiante;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -26,6 +24,12 @@ public class EstudianteDAOImplTest {
         var juanApellido = new RowAttribute("apellido", "Perez");
         var juanEdad = new RowAttribute("edad", 20);
         var juanRow = new Row(new RowAttribute[]{ juanId, juanNombre, juanApellido, juanEdad });
+
+        var anaId = new RowAttribute("id", 4);
+        var anaNombre = new RowAttribute("nombre", "Ana");
+        var anaApellido = new RowAttribute("apellido", "Perez");
+        var anaEdad = new RowAttribute("edad", 25);
+        var anaRow = new Row(new RowAttribute[]{ anaId, anaNombre, anaApellido, anaEdad });
 
         var mariaId = new RowAttribute("id", 3);
         var mariaNombre = new RowAttribute("nombre", "Maria");
@@ -44,6 +48,7 @@ public class EstudianteDAOImplTest {
             add(juanRow);
             add(mariaRow);
             add(pedroRow);
+            add(anaRow);
         }});
         var setDB = new SetDB(tables);
         this.estudianteDAO = new EstudianteDAOImpl(setDB, Estudiante.class);
@@ -52,7 +57,7 @@ public class EstudianteDAOImplTest {
     @Test
     public void findAll() throws Exception {
         var actual = this.estudianteDAO.findAll();
-        assertThat(actual).hasSize(3);
+        assertThat(actual).hasSize(4);
     }
 
     @Test
@@ -68,7 +73,7 @@ public class EstudianteDAOImplTest {
     public void save() throws Exception {
         this.estudianteDAO.save(new Estudiante(40, "Jorge", "Chacon", 27));
         var estudiante = this.estudianteDAO.findById(40);
-        assertThat(this.estudianteDAO.findAll()).hasSize(4);
+        assertThat(this.estudianteDAO.findAll()).hasSize(5);
         assertThat(estudiante.isPresent()).isTrue();
         assertThat(estudiante.get().getCarne()).isEqualTo(40);
         assertThat(estudiante.get().getNombre()).isEqualTo("Jorge");
@@ -82,7 +87,7 @@ public class EstudianteDAOImplTest {
         current.get().setApellido("Rodriguez");
         current.get().setEdad(30);
         var actual = this.estudianteDAO.update(current.get());
-        assertThat(this.estudianteDAO.findAll()).hasSize(3);
+        assertThat(this.estudianteDAO.findAll()).hasSize(4);
         assertThat(actual.get().getCarne()).isEqualTo(3);
         assertThat(actual.get().getNombre()).isEqualTo("Maria");
         assertThat(actual.get().getApellido()).isEqualTo("Rodriguez");
@@ -92,17 +97,37 @@ public class EstudianteDAOImplTest {
     @Test
     public void delete() throws Exception {
         this.estudianteDAO.delete(2);
-        assertThat(this.estudianteDAO.findAll()).hasSize(2);
+        assertThat(this.estudianteDAO.findAll()).hasSize(3);
     }
 
     @Test
     public void findByLastName() throws Exception {
-        //TODO: hay que implementarlo
+        var estudiante2 = this.estudianteDAO.findByLastName("Rojas");
+        var estudiante3 = this.estudianteDAO.findByLastName("Infante");
+        assertThat(estudiante2.get(0).getNombre()).isEqualTo("Maria");
+        assertThat(estudiante3.get(0).getNombre()).isEqualTo("Pedro");
+    }
+
+    @Test
+    public void findByLastName2() throws Exception {
+        var estudiantes = this.estudianteDAO.findByLastName("Perez");
+
+        assertThat(estudiantes.size()).isEqualTo(2);
     }
 
     @Test
     public void findAllSortedByLastName() throws Exception {
-        //TODO: hay que implementarlo
+        var estudiantes = this.estudianteDAO.findAllSortByLastName();
+
+        for (Estudiante estudiante : estudiantes){
+            System.out.println(estudiante.getNombre());
+        }
+
+//        assertThat(estudiantes.get(0).getApellido()).isEqualTo("Infante");
+//        assertThat(estudiantes.get(1).getApellido()).isEqualTo("Perez");
+//        assertThat(estudiantes.get(2).getApellido()).isEqualTo("Perez");
+//        assertThat(estudiantes.get(3).getApellido()).isEqualTo("Rojas");
+
     }
 
 

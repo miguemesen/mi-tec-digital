@@ -18,5 +18,5 @@ public interface ProfesorService {
 
     void deleteProfesor(int id);
 
-    // nuevo metodo para ver los profes por ciudad
+    List<Profesor> getProfesorByCity(String department);
 }

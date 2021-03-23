@@ -5,7 +5,11 @@ import tec.bd.app.database.set.RowAttribute;
 import tec.bd.app.database.set.SetDB;
 import tec.bd.app.domain.Estudiante;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class EstudianteDAOImpl extends GenericSetDAOImpl<Estudiante, Integer> implements EstudianteDAO {
 
@@ -15,12 +19,25 @@ public class EstudianteDAOImpl extends GenericSetDAOImpl<Estudiante, Integer> im
 
     @Override
     public List<Estudiante> findByLastName(String lastName) {
-        return null;
+        return this.findAll().stream().filter(e -> e.getApellido().equals(lastName)).collect(Collectors.toList());
     }
+
 
     @Override
     public List<Estudiante> findAllSortByLastName() {
-        return null;
+        var estudiantes = this.findAll();
+        List<String> apellidoEstudiante = new ArrayList<>();
+        for (Estudiante e : estudiantes){
+            apellidoEstudiante.add(e.getApellido());
+        }
+        apellidoEstudiante.sort(Comparator.comparing(String::toString));
+
+        List<Estudiante> finalList = new ArrayList<>();
+        for (int i = 0; i < estudiantes.size(); i++){
+            finalList.add(this.findByLastName(apellidoEstudiante.get(i)).get(0));
+            this.delete(this.findByLastName(apellidoEstudiante.get(i)).get(0).getCarne());
+        }
+        return finalList;
     }
 
     @Override

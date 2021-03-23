@@ -94,6 +94,23 @@ public class ApplicationContext {
         // Registros de la tabla profesor
         // ---------------------------------------------------------------
 
+        var albertoId = new RowAttribute("id", 100);
+        var albertoNombre = new RowAttribute("nombre", "Alberto");
+        var albertoApellido = new RowAttribute("apellido", "Vargas");
+        var albertoCiudad = new RowAttribute("ciudad", "Santa Ana");
+        var albertoRow = new Row(new RowAttribute[]{albertoId,albertoNombre, albertoApellido,albertoCiudad});
+
+        var isaacId = new RowAttribute("id", 101);
+        var isaacNombre = new RowAttribute("nombre", "Isaac");
+        var isaacApellido = new RowAttribute("apellido", "Ramirez");
+        var isaacCiudad = new RowAttribute("ciudad", "Cartago");
+        var isaacRow = new Row(new RowAttribute[]{isaacId,isaacNombre, isaacApellido,isaacCiudad});
+
+        var sofiaId = new RowAttribute("id", 102);
+        var sofiaNombre = new RowAttribute("nombre", "Sofia");
+        var sofiaApellido = new RowAttribute("apellido", "Hernandez");
+        var sofiaCiudad = new RowAttribute("ciudad", "Uvita");
+        var sofiaRow = new Row(new RowAttribute[]{sofiaId,sofiaNombre, sofiaApellido,sofiaCiudad});
 
 
         var tables = new HashMap<Class<? extends Entity>, Set<Row>>();
@@ -110,7 +127,13 @@ public class ApplicationContext {
             add(genetica);
             add(introBio);
         }});
+
         // tables.put(Profesor.class, new HashSet<>() {{ ... }}
+        tables.put(Profesor.class, new HashSet<>(){{
+            add(albertoRow);
+            add(sofiaRow);
+            add(isaacRow);
+        }});
 
         return new SetDB(tables);
     }

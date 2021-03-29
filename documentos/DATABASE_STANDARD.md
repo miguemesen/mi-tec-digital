@@ -20,8 +20,10 @@ Al utilizar el estándar de nombres de mi-tec-digital se ahorrará algunos dolor
 
 ***
 
-## Definición de estándares
 <a name="2"/>
+
+## Definición de estándares
+
 
 Preferiblemente se utilizarán minúsculas en los identificadores, ya sean nombres de views, tablas o columnas. 
 
@@ -33,8 +35,10 @@ No se pueden utilizar palabras reservadas que son reconocidas por la base de dat
 
 ***
 
-### Entidades
 <a name="21"/>
+
+### Entidades
+
 
 Estas deberán ser un sustantivo. Si es posible, que este sea una sola palabra y que sea autodescriptivo.
 
@@ -46,8 +50,10 @@ Excepciones: si hay alguna entidad que es imposible describirla en una sola pala
 
 ***
 
-### Atributos
 <a name="22"/>
+
+### Atributos
+
 
 Los atributos deben ser palabras completas y no abreviaciones, si el atributo es más de una palabra, estas deben de ser en minúscula y separadas por un guion bajo y no camel case.  Los valores guardados bajo el nombre de estos atributos deben ser valores atómicos.
 
@@ -59,8 +65,10 @@ Excepciones: depende del contexto y la estructura de la base de datos si un elem
 
 ***
 
-### Tipos de datos a usar para atributos
 <a name="23"/>
+
+### Tipos de datos a usar para atributos
+
 
 Para los id de las entidades se utilizará el **INT**, esto debido a que los identificadores de los estudiantes contienen 10 dígitos y el INT cumple con ese requisito.
 
@@ -84,8 +92,10 @@ Para los números de créditos se utilizará el **TINYINT**, ya que un curso no 
 Ejemplo: credits_subject TINYINT, 4
 ***
 
-### Llaves primarias
 <a name="24"/>
+
+### Llaves primarias
+
 
 Las llaves primarias deben de llevar un nombre sencillo, preferiblemente que sea "id", así será fácil de identificar, es corta, simple y no ambigua. 
 
@@ -95,8 +105,10 @@ Excepciones: algunas veces se utiliza un prefix del nombre de la table dentro de
 
 ***
 
-### Llaves foráneas 
 <a name="25"/>
+
+### Llaves foráneas 
+
 
 Las llaves foráneas deben de ser una combinación del nombre de la tabla referida y del nombre del campo que se hace referencia.
 
@@ -106,8 +118,10 @@ Excepciones: para columnas singulares, la llave foránea debe verse así foo_id.
 
 ***
 
-### Índices 
 <a name="26"/>
+
+### Índices 
+
 
 Los índices explícitamente deben de tener nombres que incluya tanto el nombre de la tabla como el nombre de la columna que se está indexando.  Esto hará el código más legible. 
 

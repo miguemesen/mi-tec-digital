@@ -1,13 +1,9 @@
 # Estándar de Nombres de mi-tec-digital
 
 - 1.- [Introducción](#1)  
-- 2.- [Definición de estándares](#2) 
-		- 2.1. - [Entidades](#21) 
-		- 2.2. - [Atributos](#22) 
-		- 2.3. - [Tipos de datos a usar para atributos](#23) 
-		- 2.4. - [Llaves primarias](#24)
-		- 2.5. - [Llaves foráneas](#25)
-		- 2.6. - [Índices](#26)   
+- 2.- [Definición de estándares](#2)  
+	- 2.1.- [Dos.Uno](#21)
+	- 2.2.- [Dos.Dos](#22)
 
 
 ## Introducción
@@ -49,13 +45,3 @@ Preferiblemente se utilizarán minúsculas en los identificadores, ya sean nombr
 
 No se utilizarán nombres de tipos de datos como nombres a identificadores 
 
-- 1.- [Uno](#1)  
-	- 1.1.- [Uno.Uno](#11)
-	- 1.2.- [Uno.Dos](#12)
-	- 1.3.- [Uno.Tres](#13)
-- 2.- [Dos](#2)  
-	- 2.1.- [Dos.Uno](#21)
-	- 2.2.- [Dos.Dos](#22)
-- 3.- [Tres](#3)  
-	- 3.1.- [Tres.Uno](#31)
-- 4.- [Cuatro](#4)  

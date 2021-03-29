@@ -17,6 +17,7 @@ Las ventajas de utilizar un estándar de nombres para una base de datos es para 
 
 Al utilizar el estándar de nombres de mi-tec-digital se ahorrará algunos dolores de cabeza, con la convención de nombres aplicada en este diccionario de datos mejorará la legibilidad de este y perderá menos tiempo  buscando lo que necesita. Además, al mantener un código legible cualquier persona debería de ser capaz de entender las relaciones entre los datos.
 
+***
 
 ## Definición de estándares
 <a name="2"/>
@@ -29,16 +30,20 @@ Todos los objetos deben de estar escritos en el lenguaje Inglés.
 
 No se pueden utilizar palabras reservadas que son reconocidas por la base de datos. 
 
+***
+
 ### Entidades
 <a name="21"/>
 
 Estas deberán ser un sustantivo. Si es posible, que este sea una sola palabra y que sea autodescriptivo.
 
-Ejemplo correcto: usuario, empleado, ciudad, rol, cliente.
+Ejemplo correcto: user, employee, cite, role, client.
 
-Ejemplo erróneo: usuarios, empleados, ciudades, roles.
+Ejemplo erróneo: users, employees, cities, roles.
 
 Excepciones: si hay alguna entidad que es imposible describirla en una sola palabra se pueden utilizar más, pero con un formato de cada palabra empezando en minúscula y separados por un guión.
+
+***
 
 ### Atributos
 <a name="22"/>
@@ -51,19 +56,62 @@ Ejemplo erróneo: FirstName, lastName, Address
 
 Excepciones: depende del contexto y la estructura de la base de datos si un elemento se considera de valor atómico. Por ejemplo, si no es necesario separar el nombre de los apellidos, el nombre completo puede considerarse como un valor atómico.
 
+***
+
 ### Tipos de datos a usar para atributos
 <a name="23"/>
 
+Para los id de las entidades se utilizará el **INT**, esto debido a que los identificadores de los estudiantes contienen 10 dígitos y el INT cumple con ese requisito.
 
+Ejemplo:  id_student INT NOT NULL, 2019227371
 
+Para los nombres y las direcciones de las entidades se deben de utilizar el **VARCHAR**, esto debido a que se desconoce la longitud de la información que se va ingresar en este espacio.
+
+Ejemplo: name_sutdent VARCHAR NOT NULL, Juan Vega Albaladejo.
+address_profesor VARCHAR NOT NULL
+
+Para las fechas que deben almacenar para las entidades se utilzará **DATE**, este nos permite almacenar fechas en el formato AAAA-MM-DD.
+
+Ejemplo: subscription_student DATE, 2021-09-21
+
+Para los nombres de los cursos se utilizará **CHAR**(32), esto debido a que no deberían de existir cursos con nombres más largos que esos y se asegura que no habrá un gasto innecesario de almacenamiento haciendo que este sea un VARCHAR.
+
+Ejemplo: name_subject CHAR(32), Bases de Datos
+
+Para los números de créditos se utilizará el **TINYINT**, ya que un curso no va exceder los 255 créditos.
+
+Ejemplo: credits_subject TINYINT, 4
+***
 
 ### Llaves primarias
 <a name="24"/>
 
+Las llaves primarias deben de llevar un nombre sencillo, preferiblemente que sea "id", así será fácil de identificar, es corta, simple y no ambigua. 
+
+Ejemplo: dentro de una tabla de estudiantes, si quisiera poner la identificación del estudiante como la llave primaria esta deberá llamarse sólo "id" y no "id_student".
+
+Excepciones: algunas veces se utiliza un prefix del nombre de la table dentro de la llave primaria, ejemplo: client_id.
+
+***
 
 ### Llaves foráneas 
 <a name="25"/>
 
+Las llaves foráneas deben de ser una combinación del nombre de la tabla referida y del nombre del campo que se hace referencia.
+
+Ejemplo: class_member_pkey
+
+Excepciones: para columnas singulares, la llave foránea debe verse así foo_id.
+
+***
 
 ### Índices 
 <a name="26"/>
+
+Los índices explícitamente deben de tener nombres que incluya tanto el nombre de la tabla como el nombre de la columna que se está indexando.  Esto hará el código más legible. 
+
+Ejemplo: student_index_first_name_last_name
+
+Excepciones: se pueden utilizar abreviaciones como "ix" en lugar de la palabra completa "index", ya que se ha estandarizado mucho esa abreviación para los índices, ejemplo: student_ix_first_name_last_name.
+
+***

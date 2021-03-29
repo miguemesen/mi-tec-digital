@@ -24,6 +24,13 @@ Al utilizar el estándar de nombres de mi-tec-digital se ahorrará algunos dolor
 ### Entidades
 <a name="21"/>
 
+Estas deberán ser un sustantivo. Si es posible, que este sea una sola palabra y que sea autodescriptivo.
+
+Ejemplo correcto: usuario, empleado, ciudad, rol, cliente.
+
+Ejemplo erróneo: usuarios, empleados, ciudades, roles.
+
+Excepciones: si hay 
 
 ### Atributos
 <a name="22"/>
@@ -48,4 +55,3 @@ Al utilizar el estándar de nombres de mi-tec-digital se ahorrará algunos dolor
 Preferiblemente se utilizarán minúsculas en los identificadores, ya sean nombres de views, tablas o columnas. 
 
 No se utilizarán nombres de tipos de datos como nombres a identificadores 
-

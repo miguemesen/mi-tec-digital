@@ -2,8 +2,12 @@
 
 - 1.- [Introducción](#1)  
 - 2.- [Definición de estándares](#2)  
-	- 2.1.- [Dos.Uno](#21)
-	- 2.2.- [Dos.Dos](#22)
+	- 2.1.- [Entidades](#21)
+	- 2.2.- [Atributos](#22)
+	- 2.1.- [Tipos de datos a usar para atributos](#21)
+	- 2.2.- [Llaves primarias](#22)
+	- 2.1.- [Llaves foráneas](#21)
+	- 2.2.- [Índices](#22)
 
 
 ## Introducción

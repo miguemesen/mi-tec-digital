@@ -21,6 +21,14 @@ Al utilizar el estándar de nombres de mi-tec-digital se ahorrará algunos dolor
 ## Definición de estándares
 <a name="2"/>
 
+Preferiblemente se utilizarán minúsculas en los identificadores, ya sean nombres de views, tablas o columnas. 
+
+No se utilizarán nombres de tipos de datos como nombres a identificadores.
+
+Todos los objetos deben de estar escritos en el lenguaje Inglés.
+
+No se pueden utilizar palabras reservadas que son reconocidas por la base de datos. 
+
 ### Entidades
 <a name="21"/>
 
@@ -30,14 +38,23 @@ Ejemplo correcto: usuario, empleado, ciudad, rol, cliente.
 
 Ejemplo erróneo: usuarios, empleados, ciudades, roles.
 
-Excepciones: si hay 
+Excepciones: si hay alguna entidad que es imposible describirla en una sola palabra se pueden utilizar más, pero con un formato de cada palabra empezando en minúscula y separados por un guión.
 
 ### Atributos
 <a name="22"/>
 
+Los atributos deben ser palabras completas y no abreviaciones, si el atributo es más de una palabra, estas deben de ser en minúscula y separadas por un guion bajo y no camel case.  Los valores guardados bajo el nombre de estos atributos deben ser valores atómicos.
+
+Ejemplo correcto: first_name, last_name, address.
+
+Ejemplo erróneo: FirstName, lastName, Address
+
+Excepciones: depende del contexto y la estructura de la base de datos si un elemento se considera de valor atómico. Por ejemplo, si no es necesario separar el nombre de los apellidos, el nombre completo puede considerarse como un valor atómico.
 
 ### Tipos de datos a usar para atributos
 <a name="23"/>
+
+
 
 
 ### Llaves primarias
@@ -50,8 +67,3 @@ Excepciones: si hay
 
 ### Índices 
 <a name="26"/>
-
-
-Preferiblemente se utilizarán minúsculas en los identificadores, ya sean nombres de views, tablas o columnas. 
-
-No se utilizarán nombres de tipos de datos como nombres a identificadores 

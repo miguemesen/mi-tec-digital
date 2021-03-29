@@ -9,9 +9,9 @@
 	- 2.5.- [Llaves foráneas](#25)
 	- 2.6.- [Índices](#26)
 
-
-## Introducción
 <a name="1"/>
+## Introducción
+
 
 Las ventajas de utilizar un estándar de nombres para una base de datos es para que esta persista. Una estructura de datos bien definida con un diseño correcto no es necesario cambiarlo, pueden haber cambios drásticos en una aplicación que si su base de datos fue escrita de manera correcta esta no debería de verse afectada. 
 

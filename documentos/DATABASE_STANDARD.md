@@ -3,7 +3,7 @@
 - 1.- [Introducción](#1)  
 - 2.- [Definición de estándares](#2) 
 		- 2.1. - [Entidades](#21) 
-		-  2.2. - [Atributos](#22) 
+		- 2.2. - [Atributos](#22) 
 		- 2.3. - [Tipos de datos a usar para atributos](#23) 
 		- 2.4. - [Llaves primarias](#24)
 		- 2.5. - [Llaves foráneas](#25)

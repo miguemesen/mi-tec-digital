@@ -48,3 +48,14 @@ Al utilizar el estándar de nombres de mi-tec-digital se ahorrará algunos dolor
 Preferiblemente se utilizarán minúsculas en los identificadores, ya sean nombres de views, tablas o columnas. 
 
 No se utilizarán nombres de tipos de datos como nombres a identificadores 
+
+- 1.- [Uno](#1)  
+	- 1.1.- [Uno.Uno](#11)
+	- 1.2.- [Uno.Dos](#12)
+	- 1.3.- [Uno.Tres](#13)
+- 2.- [Dos](#2)  
+	- 2.1.- [Dos.Uno](#21)
+	- 2.2.- [Dos.Dos](#22)
+- 3.- [Tres](#3)  
+	- 3.1.- [Tres.Uno](#31)
+- 4.- [Cuatro](#4)  

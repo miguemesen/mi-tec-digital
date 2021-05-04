@@ -2,11 +2,11 @@ package tec.bd.app.dao;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tec.bd.app.dao.set.ProfesorDAOImpl;
 import tec.bd.app.database.set.Row;
 import tec.bd.app.database.set.RowAttribute;
 import tec.bd.app.database.set.SetDB;
 import tec.bd.app.domain.Entity;
-import tec.bd.app.domain.Estudiante;
 import tec.bd.app.domain.Profesor;
 
 import java.util.HashMap;

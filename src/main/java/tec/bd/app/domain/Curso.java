@@ -14,7 +14,7 @@ public class Curso implements Entity{
         this.creditos = creditos;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

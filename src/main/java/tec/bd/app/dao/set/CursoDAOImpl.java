@@ -1,5 +1,6 @@
-package tec.bd.app.dao;
+package tec.bd.app.dao.set;
 
+import tec.bd.app.dao.CursoDAO;
 import tec.bd.app.database.set.Row;
 import tec.bd.app.database.set.RowAttribute;
 import tec.bd.app.database.set.SetDB;
@@ -8,7 +9,7 @@ import tec.bd.app.domain.Curso;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CursoDAOImpl extends GenericSetDAOImpl<Curso, Integer> implements CursoDAO{
+public class CursoDAOImpl extends GenericSetDAOImpl<Curso, Integer> implements CursoDAO {
 
     public CursoDAOImpl (SetDB setDb, Class<Curso> clazz){
         super(setDb, clazz);

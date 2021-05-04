@@ -1,5 +1,7 @@
-package tec.bd.app.dao;
+package tec.bd.app.dao.set;
 
+import tec.bd.app.dao.ProfesorDAO;
+import tec.bd.app.dao.set.GenericSetDAOImpl;
 import tec.bd.app.database.set.Row;
 import tec.bd.app.database.set.RowAttribute;
 import tec.bd.app.database.set.SetDB;

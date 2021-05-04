@@ -1,6 +1,9 @@
 package tec.bd.app;
 
 import tec.bd.app.dao.*;
+import tec.bd.app.dao.set.CursoDAOImpl;
+import tec.bd.app.dao.set.EstudianteDAOImpl;
+import tec.bd.app.dao.set.ProfesorDAOImpl;
 import tec.bd.app.database.set.Row;
 import tec.bd.app.database.set.RowAttribute;
 import tec.bd.app.database.set.SetDB;

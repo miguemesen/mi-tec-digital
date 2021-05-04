@@ -1,5 +1,6 @@
-package tec.bd.app.dao;
+package tec.bd.app.dao.set;
 
+import tec.bd.app.dao.EstudianteDAO;
 import tec.bd.app.database.set.Row;
 import tec.bd.app.database.set.RowAttribute;
 import tec.bd.app.database.set.SetDB;
@@ -8,7 +9,6 @@ import tec.bd.app.domain.Estudiante;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class EstudianteDAOImpl extends GenericSetDAOImpl<Estudiante, Integer> implements EstudianteDAO {

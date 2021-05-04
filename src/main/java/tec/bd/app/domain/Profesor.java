@@ -14,8 +14,9 @@ public class Profesor implements Entity {
         this.ciudad = ciudad;
     }
 
-    public int getId() {
-        return id;
+    @Override
+    public Integer getId() {
+        return this.id;
     }
 
     public void setId(int id) {

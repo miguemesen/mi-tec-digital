@@ -1,5 +1,7 @@
 # mi-tec-digital
 
+[![Java CI with Maven](https://github.com/miguemesen/mi-tec-digital/actions/workflows/maven.yml/badge.svg)](https://github.com/miguemesen/mi-tec-digital/actions/workflows/maven.yml)
+
 ## Nombre
 Miguel Mesen Molina
 

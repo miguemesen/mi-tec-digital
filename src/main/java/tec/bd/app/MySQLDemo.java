@@ -49,9 +49,11 @@ public class MySQLDemo {
             System.out.println(profesor.getNombre());
         }
 
-//        Date myDate = new java.util.Date("08/04/2000");
-//        Estudiante miguel = new Estudiante(11, "Miguel", "Mesen", myDate,17);
-//        estudianteMySqlDAO.save(miguel);
+        Date myDate = new java.util.Date("08/04/2000");
+        Estudiante sebastian = new Estudiante(12, "Sebastian", "Mora", myDate,17);
+        estudianteMySqlDAO.save(sebastian);
+
+        estudianteMySqlDAO.save(sebastian);
 
 
         List<Estudiante> list = estudianteMySqlDAO.findAll();

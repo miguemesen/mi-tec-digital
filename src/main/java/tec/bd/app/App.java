@@ -40,7 +40,7 @@ public class App  {
         options.addOption(Option.builder("ec")
                 .longOpt("estudiante-nuevo")
                 .hasArg(true)
-                .numberOfArgs(4)
+                .numberOfArgs(5)
                 .desc("Agregar Estudiante: carne, nombre y apellido son requeridos")
                 .required(false)
                 .build());
@@ -60,7 +60,7 @@ public class App  {
 
         options.addOption(Option.builder("eu")
                 .longOpt("estudiante-actualizar")
-                .numberOfArgs(4)
+                .numberOfArgs(5)
                 .desc("Actualizar estudiante: carne, nombre y apellido son requeridos")
                 .required(false)
                 .build());
@@ -72,13 +72,13 @@ public class App  {
                 .required(false)
                 .build());
 
-        options.addOption(Option.builder("erln")
+        options.addOption(Option.builder("erld")
                 .longOpt("estudiante-ordenar-por-apellido")
                 .desc("Ver los estudiantes ordenados por apellido")
                 .required(false)
                 .build());
 
-        options.addOption(Option.builder("eln")
+        options.addOption(Option.builder("eld")
                 .longOpt("estudiante-buscar-por-apellido")
                 .hasArg(true)
                 .desc("Buscar los estudiantes por apellido")
@@ -216,15 +216,15 @@ public class App  {
                         Integer.parseInt(newStudentValues[4]));
                 showAllStudents(estudianteService);
 
-            } else if(cmd.hasOption("erln")) {
+            } else if(cmd.hasOption("erld")) {
                 // Ver todos los estudiantes ordenados por apellido
                 showAllStudentsSortByLastName(estudianteService);
 
 
-            } else if(cmd.hasOption("eln")) {
+            } else if(cmd.hasOption("eld")) {
                 // Ejemplo: -eln Rojas
                 // Ver todos los estudiantes con un apellido en particular
-                var apellido = cmd.getOptionValue("eln");
+                var apellido = cmd.getOptionValue("eld");
                 showAllStudentsWithLastname(estudianteService,apellido);
 
 

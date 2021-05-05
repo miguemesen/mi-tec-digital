@@ -14,12 +14,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class CursoMySqlDAOImpl extends GenericMySqlDAOImpl<Curso, Integer> implements CursoDAO {
 
     private static final Logger LOG = LoggerFactory.getLogger(CursoMySqlDAOImpl.class);
 
     private static final String SQL_SELECT_CURSOS = "select id, nombre, creditos, departamento from curso;";
+    private static final String SQL_SELECT_CURSO_ID = "select id, nombre, creditos, departamento from curso where id = %d";
+    private static final String SQL_INSERT_CURSO = "insert into curso(id, nombre, creditos, departamento) values(%d, '%s', %d, '%s')";
+    private static final String SQL_UPDATE_CURSO = "update curso set nombre = '%s', departamento = '%s', creditos = %d where id = %d";
+    private static final String SQL_DELETE_CURSO = "delete from curso where id = %d";
 
     private final DBProperties dbProperties;
 
@@ -29,46 +34,47 @@ public class CursoMySqlDAOImpl extends GenericMySqlDAOImpl<Curso, Integer> imple
 
     @Override
     public List<Curso> findByDepartment(String department) {
-        return null;
+        return this.findAll().stream().filter(c -> c.getDepartamento().equals(department)).collect(Collectors.toList());
     }
 
     @Override
     public List<Curso> findAll() {
-        try {
-            try (Connection connection = this.dbProperties.getConnection()) {
-                LOG.info(SQL_SELECT_CURSOS);
-                try (Statement stmt = connection.createStatement()) {
-                    //execute query
-                    try (ResultSet rs = stmt.executeQuery(SQL_SELECT_CURSOS)) {
-                        return this.resultSetToList(rs);
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            LOG.error("Error when running {}", SQL_SELECT_CURSOS, e);
-        }
-
-        return Collections.emptyList();
+        return this.request(SQL_SELECT_CURSOS, dbProperties);
     }
 
     @Override
-    public Optional<Curso> findById(Integer integer) {
-        return Optional.empty();
+    public Optional<Curso> findById(Integer id) {
+        var sql = String.format(SQL_SELECT_CURSO_ID, id);
+        return this.request(sql,dbProperties).stream().findFirst();
     }
 
     @Override
     public void save(Curso curso) {
-
+        var sql = String.format(SQL_INSERT_CURSO,
+                curso.getId(),
+                curso.getNombre(),
+                curso.getCreditos(),
+                curso.getDepartamento()
+        );
+        this.requestSave(sql,dbProperties);
     }
 
     @Override
     public Optional<Curso> update(Curso curso) {
-        return Optional.empty();
+        var sql = String.format(SQL_UPDATE_CURSO,
+                curso.getNombre(),
+                curso.getDepartamento(),
+                curso.getCreditos(),
+                curso.getId()
+        );
+        this.requestUpdate(sql,dbProperties);
+        return Optional.of(curso);
     }
 
     @Override
-    public void delete(Integer integer) {
-
+    public void delete(Integer id) {
+        var sql = String.format(SQL_DELETE_CURSO, id);
+        this.requestDelete(sql,dbProperties);
     }
 
     @Override
@@ -82,7 +88,7 @@ public class CursoMySqlDAOImpl extends GenericMySqlDAOImpl<Curso, Integer> imple
     }
 
     @Override
-    protected List<Curso> resultSetToList(ResultSet resultSet) throws SQLException {
+     protected List<Curso> resultSetToList(ResultSet resultSet) throws SQLException {
         List<Curso> cursos = new ArrayList<>();
         while(resultSet.next()) {
             cursos.add(this.resultSetToEntity(resultSet));

@@ -1,4 +1,4 @@
-package tec.bd.app.dao;
+package tec.bd.app.dao.set;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,6 +9,7 @@ import tec.bd.app.database.set.SetDB;
 import tec.bd.app.domain.Entity;
 import tec.bd.app.domain.Estudiante;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.*;
@@ -67,32 +68,32 @@ public class EstudianteDAOImplTest {
         assertThat(student.get().getCarne()).isEqualTo(3);
         assertThat(student.get().getNombre()).isEqualTo("Maria");
         assertThat(student.get().getApellido()).isEqualTo("Rojas");
-        assertThat(student.get().getEdad()).isEqualTo(21);
+
     }
 
     @Test
     public void save() throws Exception {
-        this.estudianteDAO.save(new Estudiante(40, "Jorge", "Chacon", 27));
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = simpleDateFormat.parse("01/01/2000");
+
+        this.estudianteDAO.save(new Estudiante(40, "Jorge", "Chacon", date,15));
         var estudiante = this.estudianteDAO.findById(40);
         assertThat(this.estudianteDAO.findAll()).hasSize(5);
         assertThat(estudiante.isPresent()).isTrue();
         assertThat(estudiante.get().getCarne()).isEqualTo(40);
         assertThat(estudiante.get().getNombre()).isEqualTo("Jorge");
         assertThat(estudiante.get().getApellido()).isEqualTo("Chacon");
-        assertThat(estudiante.get().getEdad()).isEqualTo(27);
     }
 
     @Test
     public void update() throws Exception {
         var current = this.estudianteDAO.findById(3);
         current.get().setApellido("Rodriguez");
-        current.get().setEdad(30);
         var actual = this.estudianteDAO.update(current.get());
         assertThat(this.estudianteDAO.findAll()).hasSize(4);
         assertThat(actual.get().getCarne()).isEqualTo(3);
         assertThat(actual.get().getNombre()).isEqualTo("Maria");
         assertThat(actual.get().getApellido()).isEqualTo("Rodriguez");
-        assertThat(actual.get().getEdad()).isEqualTo(30);
     }
 
     @Test

@@ -1,9 +1,13 @@
 package tec.bd.app;
 
 import tec.bd.app.dao.*;
+import tec.bd.app.dao.mariaDB.CursoMySqlDAOImpl;
+import tec.bd.app.dao.mariaDB.EstudianteMySqlDAOImpl;
+import tec.bd.app.dao.mariaDB.ProfesorMySqlDAOImpl;
 import tec.bd.app.dao.set.CursoDAOImpl;
 import tec.bd.app.dao.set.EstudianteDAOImpl;
 import tec.bd.app.dao.set.ProfesorDAOImpl;
+import tec.bd.app.database.mariaDB.DBProperties;
 import tec.bd.app.database.set.Row;
 import tec.bd.app.database.set.RowAttribute;
 import tec.bd.app.database.set.SetDB;
@@ -20,6 +24,7 @@ import java.util.Set;
 public class ApplicationContext {
 
     private SetDB setDB;
+
     private EstudianteDAO estudianteSetDAO;
     private EstudianteService estudianteServiceSet;
 
@@ -29,19 +34,31 @@ public class ApplicationContext {
     private ProfesorDAO profesorSetDAO;
     private ProfesorService profesorService;
 
+    DBProperties dbProperties = new DBProperties("jdbc:mariadb://localhost:3306/universidad","root","my-secret-pw");
+
     private ApplicationContext() {
 
     }
 
     public static ApplicationContext init() {
         ApplicationContext applicationContext = new ApplicationContext();
-        applicationContext.setDB = initSetDB();
-        applicationContext.estudianteSetDAO = initEstudianteSetDAO(applicationContext.setDB);
-        applicationContext.estudianteServiceSet = initEstudianteSetService(applicationContext.estudianteSetDAO);
-        applicationContext.cursoSetDAO = initCursoSetDAO(applicationContext.setDB);
-        applicationContext.cursoService = initCursoService(applicationContext.cursoSetDAO);
-        applicationContext.profesorSetDAO = initProfesorSetDAO(applicationContext.setDB);
+
+        applicationContext.profesorSetDAO = initProfesorMysqlDAO(applicationContext.dbProperties);
         applicationContext.profesorService = initProfesorService(applicationContext.profesorSetDAO);
+
+        applicationContext.estudianteSetDAO = initEstudianteMysqlDAO(applicationContext.dbProperties);
+        applicationContext.estudianteServiceSet = initEstudianteSetService(applicationContext.estudianteSetDAO);
+
+        applicationContext.cursoSetDAO = initCursoMysqlDAO(applicationContext.dbProperties);
+        applicationContext.cursoService = initCursoService(applicationContext.cursoSetDAO);
+
+//        applicationContext.setDB = initSetDB();
+//        applicationContext.estudianteSetDAO = initEstudianteSetDAO(applicationContext.setDB);
+//        applicationContext.estudianteServiceSet = initEstudianteSetService(applicationContext.estudianteSetDAO);
+//        applicationContext.cursoSetDAO = initCursoSetDAO(applicationContext.setDB);
+//        applicationContext.cursoService = initCursoService(applicationContext.cursoSetDAO);
+//        applicationContext.profesorSetDAO = initProfesorSetDAO(applicationContext.setDB);
+//        applicationContext.profesorService = initProfesorService(applicationContext.profesorSetDAO);
         return applicationContext;
     }
 
@@ -140,6 +157,26 @@ public class ApplicationContext {
 
         return new SetDB(tables);
     }
+
+
+
+
+    private static EstudianteDAO initEstudianteMysqlDAO(DBProperties dbProperties){
+        return new EstudianteMySqlDAOImpl(dbProperties);
+    }
+
+    private static CursoDAO initCursoMysqlDAO(DBProperties dbProperties){
+        return new CursoMySqlDAOImpl(dbProperties);
+    }
+
+    private static ProfesorDAO initProfesorMysqlDAO(DBProperties dbProperties){
+        return new ProfesorMySqlDAOImpl(dbProperties);
+    }
+
+
+
+
+    //___________________________________________________________________________________________
 
     private static EstudianteDAO initEstudianteSetDAO(SetDB setDB) {
         return new EstudianteDAOImpl(setDB, Estudiante.class);

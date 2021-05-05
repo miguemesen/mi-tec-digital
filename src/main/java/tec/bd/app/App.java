@@ -11,6 +11,7 @@ import tec.bd.app.service.CursoService;
 import tec.bd.app.service.EstudianteService;
 import tec.bd.app.service.ProfesorService;
 
+import java.util.Date;
 import java.util.Optional;
 
 public class App  {
@@ -196,7 +197,8 @@ public class App  {
                         Integer.parseInt(newStudentValues[0]),
                         newStudentValues[1],
                         newStudentValues[2],
-                        Integer.parseInt(newStudentValues[3]));
+                        java.sql.Date.valueOf(newStudentValues[3]),
+                        Integer.parseInt(newStudentValues[4]));
                 showAllStudents(estudianteService);
             } else if(cmd.hasOption("ed")) {
                 // Borrar/remover un estudiante
@@ -210,7 +212,8 @@ public class App  {
                         Integer.parseInt(newStudentValues[0]),
                         newStudentValues[1],
                         newStudentValues[2],
-                        Integer.parseInt(newStudentValues[3]));
+                        java.sql.Date.valueOf(newStudentValues[3]),
+                        Integer.parseInt(newStudentValues[4]));
                 showAllStudents(estudianteService);
 
             } else if(cmd.hasOption("erln")) {
@@ -346,7 +349,7 @@ public class App  {
         System.out.println("Carne\t\tNombre\t\tApellido\tEdad");
         System.out.println("-----------------------------------------------------------------------");
         for (Estudiante estudiante : estudianteService.getStudentsByLastName(lastname)){
-            System.out.println(estudiante.getCarne() + "\t\t" + estudiante.getNombre() + "\t\t" +estudiante.getApellido() + "\t\t"+ estudiante.getEdad());
+            System.out.println(estudiante.getCarne() + "\t\t" + estudiante.getNombre() + "\t\t" +estudiante.getApellido() );
         }
         System.out.println("-----------------------------------------------------------------------");
         System.out.println("\n\n");
@@ -360,7 +363,7 @@ public class App  {
         System.out.println("Carne\t\tNombre\t\tApellido\tEdad");
         System.out.println("-----------------------------------------------------------------------");
         for(Estudiante estudiante : estudianteService.getAll()) {
-            System.out.println(estudiante.getCarne() + "\t\t" + estudiante.getNombre() + "\t\t" +estudiante.getApellido() + "\t\t"+ estudiante.getEdad());
+            System.out.println(estudiante.getCarne() + "\t\t" + estudiante.getNombre() + "\t\t" +estudiante.getApellido() );
         }
         System.out.println("-----------------------------------------------------------------------");
         System.out.println("\n\n");
@@ -374,7 +377,7 @@ public class App  {
         System.out.println("Carne\t\tNombre\t\tApellido\tEdad");
         System.out.println("-----------------------------------------------------------------------");
         for(Estudiante estudiante : estudianteService.getStudentsSortedByLastName()) {
-            System.out.println(estudiante.getCarne() + "\t\t" + estudiante.getNombre() + "\t\t" +estudiante.getApellido() + "\t\t"+ estudiante.getEdad());
+            System.out.println(estudiante.getCarne() + "\t\t" + estudiante.getNombre() + "\t\t" +estudiante.getApellido() );
         }
         System.out.println("-----------------------------------------------------------------------");
         System.out.println("\n\n");
@@ -390,8 +393,8 @@ public class App  {
         }
     }
 
-    public static void addNewStudent(EstudianteService estudianteService, int carne, String nombre, String apellido, int edad) {
-        var nuevoEstudiante = new Estudiante(carne,nombre, apellido, edad);
+    public static void addNewStudent(EstudianteService estudianteService, int carne, String nombre, String apellido, Date fechaNacimiento, int totalCreditos) {
+        var nuevoEstudiante = new Estudiante(carne,nombre, apellido, fechaNacimiento, totalCreditos);
         estudianteService.addNew(nuevoEstudiante);
     }
 
@@ -399,8 +402,8 @@ public class App  {
         estudianteService.deleteStudent(carne);
     }
 
-    public static void updateStudent(EstudianteService estudianteService, int carne, String nombre, String apellido, int edad) {
-        var nuevoEstudiante = new Estudiante(carne,nombre, apellido, edad);
+    public static void updateStudent(EstudianteService estudianteService, int carne, String nombre, String apellido, Date fechaNacimiento, int totalCreditos) {
+        var nuevoEstudiante = new Estudiante(carne,nombre, apellido, fechaNacimiento, totalCreditos);
         estudianteService.updateStudent(nuevoEstudiante);
     }
 

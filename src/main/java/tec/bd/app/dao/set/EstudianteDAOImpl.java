@@ -46,8 +46,9 @@ public class EstudianteDAOImpl extends GenericSetDAOImpl<Estudiante, Integer> im
         var carne = row.intAttributeValue("id");
         var nombre = row.stringAttributeValue("nombre");
         var apellido = row.stringAttributeValue("apellido");
-        var edad = row.intAttributeValue("edad");
-        return new Estudiante(carne, nombre, apellido, edad);
+        var fechaNacimiento = row.attribute("fechaNacimiento");
+        var totalCreditos = row.attribute("totalCreditos");
+        return null;
     }
 
     @Override
@@ -57,7 +58,7 @@ public class EstudianteDAOImpl extends GenericSetDAOImpl<Estudiante, Integer> im
                 new RowAttribute("id", e.getCarne()),
                 new RowAttribute("nombre", e.getNombre()),
                 new RowAttribute("apellido", e.getApellido()),
-                new RowAttribute("edad", e.getEdad())
+
         });
     }
 

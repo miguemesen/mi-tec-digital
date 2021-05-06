@@ -18,10 +18,15 @@ public abstract class GenericMySqlDAOImpl<T extends Entity, ID extends Serializa
 
     private final Logger LOG = LoggerFactory.getLogger(MySQLDemo.class);
 
+    protected DBProperties dbProperties;
 
-    public void requestDelete(String query, DBProperties dbProperties) {
+    protected  GenericMySqlDAOImpl(DBProperties dbProperties){
+        this.dbProperties = dbProperties;
+    }
+
+    public void requestDelete(String query) {
         try {
-            try (Connection connection = dbProperties.getConnection()) {
+            try (Connection connection = this.dbProperties.getConnection()) {
                 try (Statement stmt = connection.createStatement()) {
                     LOG.info(query);
                     int rowCount = stmt.executeUpdate(query);
@@ -34,10 +39,10 @@ public abstract class GenericMySqlDAOImpl<T extends Entity, ID extends Serializa
     }
 
 
-    public void requestUpdate(String query, DBProperties dbProperties) {
+    public void requestUpdate(String query) {
 
         try {
-            try (Connection connection = dbProperties.getConnection()) {
+            try (Connection connection = this.dbProperties.getConnection()) {
                 try (Statement stmt = connection.createStatement()) {
                     LOG.info(query);
                     int rowCount = stmt.executeUpdate(query);
@@ -52,9 +57,9 @@ public abstract class GenericMySqlDAOImpl<T extends Entity, ID extends Serializa
     }
 
 
-    public void requestSave(String query, DBProperties dbProperties) {
+    public void requestSave(String query) {
         try {
-            try (Connection connection = dbProperties.getConnection()) {
+            try (Connection connection = this.dbProperties.getConnection()) {
                 try (Statement stmt = connection.createStatement()) {
                     int rowCount = stmt.executeUpdate(query);
                     LOG.debug("{} fila agregada", rowCount);
@@ -65,9 +70,9 @@ public abstract class GenericMySqlDAOImpl<T extends Entity, ID extends Serializa
         }
     }
 
-    public List<T> request(String query, DBProperties dbProperties){
+    public List<T> request(String query){
         try{
-            try (Connection connection = dbProperties.getConnection()) {
+            try (Connection connection = this.dbProperties.getConnection()) {
                 try (Statement stmt = connection.createStatement()){
                     // execute query
                     try (ResultSet resultSet = stmt.executeQuery(query)){

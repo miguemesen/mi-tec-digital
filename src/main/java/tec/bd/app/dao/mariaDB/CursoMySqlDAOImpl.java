@@ -26,11 +26,11 @@ public class CursoMySqlDAOImpl extends GenericMySqlDAOImpl<Curso, Integer> imple
     private static final String SQL_UPDATE_CURSO = "update curso set nombre = '%s', departamento = '%s', creditos = %d where id = %d";
     private static final String SQL_DELETE_CURSO = "delete from curso where id = %d";
 
-    private final DBProperties dbProperties;
 
     public CursoMySqlDAOImpl(DBProperties dbProperties) {
-        this.dbProperties = dbProperties;
+        super(dbProperties);
     }
+
 
     @Override
     public List<Curso> findByDepartment(String department) {
@@ -39,13 +39,13 @@ public class CursoMySqlDAOImpl extends GenericMySqlDAOImpl<Curso, Integer> imple
 
     @Override
     public List<Curso> findAll() {
-        return this.request(SQL_SELECT_CURSOS, dbProperties);
+        return this.request(SQL_SELECT_CURSOS);
     }
 
     @Override
     public Optional<Curso> findById(Integer id) {
         var sql = String.format(SQL_SELECT_CURSO_ID, id);
-        return this.request(sql,dbProperties).stream().findFirst();
+        return this.request(sql).stream().findFirst();
     }
 
     @Override
@@ -56,7 +56,7 @@ public class CursoMySqlDAOImpl extends GenericMySqlDAOImpl<Curso, Integer> imple
                 curso.getCreditos(),
                 curso.getDepartamento()
         );
-        this.requestSave(sql,dbProperties);
+        this.requestSave(sql);
     }
 
     @Override
@@ -67,14 +67,14 @@ public class CursoMySqlDAOImpl extends GenericMySqlDAOImpl<Curso, Integer> imple
                 curso.getCreditos(),
                 curso.getId()
         );
-        this.requestUpdate(sql,dbProperties);
+        this.requestUpdate(sql);
         return Optional.of(curso);
     }
 
     @Override
     public void delete(Integer id) {
         var sql = String.format(SQL_DELETE_CURSO, id);
-        this.requestDelete(sql,dbProperties);
+        this.requestDelete(sql);
     }
 
     @Override

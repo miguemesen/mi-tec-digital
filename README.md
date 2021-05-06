@@ -9,6 +9,12 @@ Miguel Mesen Molina
 2019227371
 
 
+## Nota para profesores
+Realicé el requerimieto extra de compartir la lógica de las consultas.
+
+Esto lo logré agregando métodos de request a la clase abstracta GenericMySqlDAO que es padre de las clases MySqlDAO Curso, Estudiante y profesor.
+
+
 
 ## Revisión de tarea 1
 

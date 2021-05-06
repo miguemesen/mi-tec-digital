@@ -17,7 +17,6 @@ public class EstudianteMySqlDAOImpl extends GenericMySqlDAOImpl<Estudiante, Inte
 
     private static final Logger LOG = LoggerFactory.getLogger(EstudianteMySqlDAOImpl.class);
 
-    private final DBProperties dbProperties;
 
     private static final String SQL_SELECT_ESTUDIANTES = "select id, nombre, apellido, fecha_nacimiento, total_creditos from estudiante;";
     private static final String SQL_SELECT_ESTUDIANTES_APELLIDO_ASC = "select id, nombre, apellido, fecha_nacimiento, total_creditos from estudiante order by apellido asc;";
@@ -27,8 +26,9 @@ public class EstudianteMySqlDAOImpl extends GenericMySqlDAOImpl<Estudiante, Inte
     private static final String SQL_DELETE_ESTUDIANTE = "delete from estudiante where id = %d";
 
     public EstudianteMySqlDAOImpl(DBProperties dbProperties) {
-        this.dbProperties = dbProperties;
+        super(dbProperties);
     }
+
 
     @Override
     public List<Estudiante> findByLastName(String lastName) {
@@ -37,18 +37,18 @@ public class EstudianteMySqlDAOImpl extends GenericMySqlDAOImpl<Estudiante, Inte
 
     @Override
     public List<Estudiante> findAllSortByLastName() {
-        return this.request(SQL_SELECT_ESTUDIANTES_APELLIDO_ASC,dbProperties);
+        return this.request(SQL_SELECT_ESTUDIANTES_APELLIDO_ASC);
     }
 
     @Override
     public List<Estudiante> findAll() {
-        return this.request(SQL_SELECT_ESTUDIANTES,dbProperties);
+        return this.request(SQL_SELECT_ESTUDIANTES);
     }
 
     @Override
     public Optional<Estudiante> findById(Integer id) {
         var sql = String.format(SQL_SELECT_ESTUDIANTE_ID, id);
-        return this.request(sql,dbProperties).stream().findFirst();
+        return this.request(sql).stream().findFirst();
     }
 
     @Override
@@ -60,7 +60,7 @@ public class EstudianteMySqlDAOImpl extends GenericMySqlDAOImpl<Estudiante, Inte
                 estudiante.getFechaNacimiento(),
                 estudiante.getTotalCreditos()
         );
-        this.requestSave(sql,dbProperties);
+        this.requestSave(sql);
     }
 
     @Override
@@ -73,7 +73,7 @@ public class EstudianteMySqlDAOImpl extends GenericMySqlDAOImpl<Estudiante, Inte
                 estudiante.getTotalCreditos(),
                 estudiante.getId()
         );
-        this.requestUpdate(sql,dbProperties);
+        this.requestUpdate(sql);
         return Optional.of(estudiante);
     }
 
@@ -81,7 +81,7 @@ public class EstudianteMySqlDAOImpl extends GenericMySqlDAOImpl<Estudiante, Inte
     @Override
     public void delete(Integer id) {
         var sql = String.format(SQL_DELETE_ESTUDIANTE, id);
-        this.requestDelete(sql,dbProperties);
+        this.requestDelete(sql);
     }
 
     @Override

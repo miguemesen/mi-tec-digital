@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class ProfesorMySqlDAOImpl extends GenericMySqlDAOImpl<Profesor,Integer> implements ProfesorDAO {
 
-    private final DBProperties dbProperties;
+
 
     private static final String SQL_SELECT_PROFESORES = "select id, nombre, apellido, ciudad from profesor;";
     private static final String SQL_SELECT_PROFESOR_ID = "select id, nombre, apellido, ciudad from profesor where id = %d";
@@ -21,19 +21,20 @@ public class ProfesorMySqlDAOImpl extends GenericMySqlDAOImpl<Profesor,Integer> 
     private static final String SQL_DELETE_PROFESOR = "delete from profesor where id = %d";
     private static final String SQL_SELECT_PROFESOR_CIUDAD = "select id, nombre, apellido, ciudad from profesor where ciudad = '%s'";
 
-    public ProfesorMySqlDAOImpl(DBProperties dbProperties){
-        this.dbProperties = dbProperties;
+    public ProfesorMySqlDAOImpl(DBProperties dbProperties) {
+        super(dbProperties);
     }
+
 
     @Override
     public List<Profesor> findAll() {
-        return this.request(SQL_SELECT_PROFESORES,dbProperties);
+        return this.request(SQL_SELECT_PROFESORES);
     }
 
     @Override
     public Optional<Profesor> findById(Integer id) {
         var sql = String.format(SQL_SELECT_PROFESOR_ID, id);
-        return this.request(sql,dbProperties).stream().findFirst();
+        return this.request(sql).stream().findFirst();
     }
 
     @Override
@@ -44,7 +45,7 @@ public class ProfesorMySqlDAOImpl extends GenericMySqlDAOImpl<Profesor,Integer> 
                 profesor.getApellido(),
                 profesor.getCiudad()
         );
-        this.requestSave(sql,dbProperties);
+        this.requestSave(sql);
     }
 
     @Override
@@ -55,20 +56,20 @@ public class ProfesorMySqlDAOImpl extends GenericMySqlDAOImpl<Profesor,Integer> 
                 profesor.getCiudad(),
                 profesor.getId()
         );
-        this.requestUpdate(sql,dbProperties);
+        this.requestUpdate(sql);
         return Optional.of(profesor);
     }
 
     @Override
     public void delete(Integer id) {
         var sql = String.format(SQL_DELETE_PROFESOR, id);
-        this.requestDelete(sql,dbProperties);
+        this.requestDelete(sql);
     }
 
     @Override
     public List<Profesor> findByCity(String ciudad) {
         var sql = String.format(SQL_SELECT_PROFESOR_CIUDAD, ciudad);
-        return this.request(sql,dbProperties);
+        return this.request(sql);
     }
 
     @Override

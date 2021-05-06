@@ -23,11 +23,6 @@ public class RequestSQL {
                     // execute query
                     try (ResultSet resultSet = stmt.executeQuery(query)){
                                                 while (resultSet.next()){
-            System.out.println(resultSet.getInt("id"));
-            System.out.println(resultSet.getString("nombre"));
-            System.out.println(resultSet.getString("apellido"));
-            System.out.println(resultSet.getDate("fecha_nacimiento"));
-            System.out.println(resultSet.getInt("total_creditos"));
                         }
                         return resultSet;
                     }

@@ -345,13 +345,13 @@ public class App  {
     public static void showAllStudentsWithLastname(EstudianteService estudianteService, String lastname){
         System.out.println("\n\n");
         System.out.println("Lista de Estudiantes con apellido " + lastname);
-        System.out.println("-----------------------------------------------------------------------");
-        System.out.println("Carne\t\tNombre\t\tApellido\tEdad");
-        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------------------------");
+        System.out.println("Carne\t\tNombre\t\tApellido\t\tFecha nacimiento\tTotal creditos");
+        System.out.println("----------------------------------------------------------------------------------------------------------");
         for (Estudiante estudiante : estudianteService.getStudentsByLastName(lastname)){
-            System.out.println(estudiante.getCarne() + "\t\t" + estudiante.getNombre() + "\t\t" +estudiante.getApellido() );
+            System.out.println(estudiante.getCarne() + "\t\t" + estudiante.getNombre() + "\t\t" +estudiante.getApellido() + "\t\t" + estudiante.getFechaNacimiento() + "\t\t" + estudiante.getTotalCreditos());
         }
-        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.println("\n\n");
     }
 
@@ -359,13 +359,13 @@ public class App  {
 
         System.out.println("\n\n");
         System.out.println("Lista de Estudiantes");
-        System.out.println("-----------------------------------------------------------------------");
-        System.out.println("Carne\t\tNombre\t\tApellido\tEdad");
-        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------------------------");
+        System.out.println("Carne\t\tNombre\t\tApellido\t\tFecha nacimiento\tTotal creditos");
+        System.out.println("----------------------------------------------------------------------------------------------------------");
         for(Estudiante estudiante : estudianteService.getAll()) {
-            System.out.println(estudiante.getCarne() + "\t\t" + estudiante.getNombre() + "\t\t" +estudiante.getApellido() );
+            System.out.println(estudiante.getCarne() + "\t\t" + estudiante.getNombre() + "\t\t" +estudiante.getApellido() + "\t\t" + estudiante.getFechaNacimiento() + "\t\t" + estudiante.getTotalCreditos());
         }
-        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.println("\n\n");
     }
 
@@ -373,21 +373,23 @@ public class App  {
     public static void showAllStudentsSortByLastName(EstudianteService estudianteService){
         System.out.println("\n\n");
         System.out.println("Lista de Estudiantes ordenada por apellido");
-        System.out.println("-----------------------------------------------------------------------");
-        System.out.println("Carne\t\tNombre\t\tApellido\tEdad");
-        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------------------------");
+        System.out.println("Carne\t\tNombre\t\tApellido\t\tFecha nacimiento\tTotal creditos");
+        System.out.println("----------------------------------------------------------------------------------------------------------");
         for(Estudiante estudiante : estudianteService.getStudentsSortedByLastName()) {
-            System.out.println(estudiante.getCarne() + "\t\t" + estudiante.getNombre() + "\t\t" +estudiante.getApellido() );
+            System.out.println(estudiante.getCarne() + "\t\t" + estudiante.getNombre() + "\t\t" +estudiante.getApellido() + "\t\t" + estudiante.getFechaNacimiento() + "\t\t" + estudiante.getTotalCreditos());
         }
-        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.println("\n\n");
     }
 
     public static void showStudentInfo(EstudianteService estudianteService, int carne) {
         Optional<Estudiante> estudiante = estudianteService.getById(carne);
         if(estudiante.isPresent()) {
-            System.out.println("Estudiante: " + estudiante.get().getNombre() + " " + estudiante.get().getApellido());
             System.out.println("Carne: " + estudiante.get().getCarne());
+            System.out.println("Estudiante: " + estudiante.get().getNombre() + " " + estudiante.get().getApellido());
+            System.out.println("Fecha de nacimiento: " + estudiante.get().getFechaNacimiento());
+            System.out.println("Total de creditos: " + estudiante.get().getTotalCreditos());
         } else {
             System.out.println("Estudiante con carne: " + carne + " no existe");
         }

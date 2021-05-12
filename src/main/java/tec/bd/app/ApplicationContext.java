@@ -181,7 +181,6 @@ public class ApplicationContext {
     private static EstudianteDAO initEstudianteSetDAO(SetDB setDB) {
         return new EstudianteDAOImpl(setDB, Estudiante.class);
     }
-
     private static EstudianteService initEstudianteSetService(EstudianteDAO estudianteDAO) {
         return new EstudianteServiceImpl(estudianteDAO);
     }
@@ -189,7 +188,6 @@ public class ApplicationContext {
     private static CursoDAO initCursoSetDAO(SetDB setDB){
         return new CursoDAOImpl(setDB, Curso.class);
     }
-
     private static CursoService initCursoService(CursoDAO cursoDAO){
         return new CursoServiceImpl(cursoDAO);
     }
@@ -197,7 +195,6 @@ public class ApplicationContext {
     private static ProfesorDAO initProfesorSetDAO(SetDB setDB){
         return new ProfesorDAOImpl(setDB, Profesor.class);
     }
-
     private static ProfesorService initProfesorService(ProfesorDAO profesorDAO){
         return new ProfesorServiceImpl(profesorDAO);
     }

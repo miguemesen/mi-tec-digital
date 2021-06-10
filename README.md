@@ -18,3 +18,12 @@ Nota 10
 3. En `EstudianteService` hizo uso del método `this.getAll()` para obtener un Estudiante en particular. Pudo haber utilizado `this.getById()` para no tener que recorrerlos todos.
 4. En `EstudianteServiceTest` para las pruebas unitarias intente tomar un enfoque de: "lo que pasó antes" y "lo que va a pasar". Es que por ejemplo probar que ud hizo una actualización y luego verificar que la cantidad de estudiantes sigue siendo 3 es poco útil. Hubiera podido obtener de la "base de datos" actual por medio del carné (2), luego hacer la actualización (2) y, como método de verificación comparar que del paso (1) con el del paso (2). Intente un enfoque similar para las pruebas de borrado.
 
+
+## Revisión tarea 4
+
+Nota 10.
+
+Hubo algunos métodos en los DAOs en donde filtró los datos a partir de una sentencia SQL general. Si bien, esto esta bien, tampoco está tan bien. Si tuviera un `ResultSet` de 10mil registros, tomarlos todos y luego filtrarlos podria ser una tarea costosa en términos de rendimiento.
+
+Muy bien al extraer lógica repetida.
+

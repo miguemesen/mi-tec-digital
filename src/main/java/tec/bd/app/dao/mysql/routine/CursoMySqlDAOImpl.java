@@ -16,7 +16,7 @@ import java.util.Optional;
 
 
 public class CursoMySqlDAOImpl extends GenericMySqlDAOImpl<Curso,Integer> implements CursoDAO {
-    protected CursoMySqlDAOImpl(DBProperties dbProperties) {
+    public CursoMySqlDAOImpl(DBProperties dbProperties) {
         super(dbProperties);
     }
 
@@ -136,14 +136,4 @@ public class CursoMySqlDAOImpl extends GenericMySqlDAOImpl<Curso,Integer> implem
     }
 
 
-    public static void main(String args[]){
-        DBProperties dbProperties = new DBProperties("jdbc:mariadb://localhost:3306/universidad","root","my-secret-pw");
-
-        CursoMySqlDAOImpl cursoMySqlDAO = new CursoMySqlDAOImpl(dbProperties);
-
-
-        cursoMySqlDAO.delete(1);
-
-
-    }
 }

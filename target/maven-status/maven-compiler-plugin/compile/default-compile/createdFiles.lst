@@ -3,6 +3,7 @@ tec/bd/app/service/CursoServiceImpl.class
 tec/bd/app/domain/Estudiante.class
 tec/bd/app/database/set/RowAttribute.class
 tec/bd/app/domain/Profesor.class
+tec/bd/app/dao/mysql/routine/CursoMySqlDAOImpl.class
 tec/bd/app/ApplicationContext$3.class
 tec/bd/app/database/set/SetDB.class
 tec/bd/app/domain/Curso.class
@@ -13,6 +14,7 @@ tec/bd/app/database/mariaDB/DBProperties.class
 tec/bd/app/domain/Entity.class
 tec/bd/app/ApplicationContext$1.class
 tec/bd/app/dao/mysql/GenericMySqlDAOImpl.class
+tec/bd/app/dao/mysql/routine/ProfesorMySqlDAOImpl.class
 tec/bd/app/ApplicationContext$2.class
 tec/bd/app/dao/mysql/CursoMySqlDAOImpl.class
 tec/bd/app/service/EstudianteService.class
@@ -25,9 +27,11 @@ tec/bd/app/dao/CursoDAO.class
 tec/bd/app/dao/set/ProfesorDAOImpl.class
 tec/bd/app/RequestSQL.class
 tec/bd/app/MySQLDemo.class
+tec/bd/app/dao/mysql/routine/GenericMySqlDAOImpl.class
 tec/bd/app/dao/ProfesorDAO.class
 tec/bd/app/service/ProfesorService.class
 tec/bd/app/service/ProfesorServiceImpl.class
+tec/bd/app/dao/mysql/routine/EstudianteMySqlDAOImpl.class
 tec/bd/app/App.class
 tec/bd/app/dao/mysql/ProfesorMySqlDAOImpl.class
 tec/bd/app/dao/set/EstudianteDAOImpl.class

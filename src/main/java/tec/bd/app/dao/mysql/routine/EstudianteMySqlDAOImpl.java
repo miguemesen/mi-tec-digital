@@ -203,16 +203,5 @@ public class EstudianteMySqlDAOImpl extends GenericMySqlDAOImpl<Estudiante,Integ
         return estudiantes;
     }
 
-    public static void main(String args[]){
-        DBProperties dbProperties = new DBProperties("jdbc:mariadb://localhost:3306/universidad","universidad_user","universidad_pass");
-
-        EstudianteMySqlDAOImpl estudianteMySqlDAO = new EstudianteMySqlDAOImpl(dbProperties);
-
-        List<Estudiante> myList =  estudianteMySqlDAO.findAll();
-
-        for (Estudiante e : myList){
-            System.out.println(e.getNombre());
-        }
-    }
 
 }

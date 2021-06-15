@@ -34,7 +34,7 @@ public class ApplicationContext {
     private ProfesorDAO profesorSetDAO;
     private ProfesorService profesorService;
 
-    DBProperties dbProperties = new DBProperties("jdbc:mariadb://localhost:3306/universidad","root","my-secret-pw");
+    DBProperties dbProperties = new DBProperties("jdbc:mariadb://localhost:3306/universidad","universidad_user","universidad_pass");
 
     private ApplicationContext() {
 

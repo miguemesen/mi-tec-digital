@@ -1,4 +1,4 @@
-package tec.bd.app.dao.mariaDB;
+package tec.bd.app.dao.mysql;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,13 +6,11 @@ import tec.bd.app.MySQLDemo;
 import tec.bd.app.dao.GenericDAO;
 import tec.bd.app.database.mariaDB.DBProperties;
 import tec.bd.app.domain.Entity;
-import tec.bd.app.domain.Estudiante;
 
 import java.io.Serializable;
 import java.sql.*;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 public abstract class GenericMySqlDAOImpl<T extends Entity, ID extends Serializable> implements GenericDAO<T, ID> {
 

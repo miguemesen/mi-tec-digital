@@ -2,15 +2,14 @@ package tec.bd.app;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tec.bd.app.dao.mariaDB.CursoMySqlDAOImpl;
-import tec.bd.app.dao.mariaDB.EstudianteMySqlDAOImpl;
-import tec.bd.app.dao.mariaDB.ProfesorMySqlDAOImpl;
+import tec.bd.app.dao.mysql.CursoMySqlDAOImpl;
+import tec.bd.app.dao.mysql.EstudianteMySqlDAOImpl;
+import tec.bd.app.dao.mysql.ProfesorMySqlDAOImpl;
 import tec.bd.app.database.mariaDB.DBProperties;
 import tec.bd.app.domain.Curso;
 import tec.bd.app.domain.Estudiante;
 import tec.bd.app.domain.Profesor;
 
-import java.io.File;
 import java.sql.*;
 import java.util.Date;
 import java.util.List;

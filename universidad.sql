@@ -91,3 +91,87 @@ insert into estudiante(id, nombre, apellido, fecha_nacimiento, total_creditos) v
 insert into estudiante(id, nombre, apellido, fecha_nacimiento, total_creditos) values(8, 'Johan', 'Echeverria', '2000-01-01 00:00:00', 15);
 insert into estudiante(id, nombre, apellido, fecha_nacimiento, total_creditos) values(9, 'Junior', 'Herrera', '2000-01-01 00:00:00', 15);
 insert into estudiante(id, nombre, apellido, fecha_nacimiento, total_creditos) values(11, 'Miguel', 'Leon', '2010-01-01 00:00:00', 17);
+
+
+-- Procedimientos para Cursos ---------------------------------------------------------------------------------------
+
+drop procedure if exists all_courses;
+delimiter $$
+
+create procedure all_courses()
+begin
+    select id,nombre,departamento,creditos from curso;
+end $$
+
+delimiter ;
+
+
+drop procedure if exists find_course_by_id;
+delimiter $$
+create procedure find_course_by_id(
+    in curso_id int
+)
+begin
+    select id,nombre,creditos,departamento from curso where id = curso_id;
+end $$
+delimiter ;
+
+
+drop procedure if exists find_course_by_department;
+delimiter $$
+create procedure find_course_by_department(
+    in curso_department varchar(30)
+)
+begin
+    select id,nombre,creditos,departamento from curso where departamento = curso_department;
+end $$
+delimiter ;
+
+
+drop procedure if exists save_course;
+delimiter $$
+create procedure save_course(
+    in curso_id int,
+    in curso_nombre varchar(30),
+    in curso_department varchar(30),
+    in curso_creditos int
+)
+begin
+    start transaction;
+    insert into curso(id, nombre, departamento, creditos) VALUES (curso_id,curso_nombre,curso_department,curso_creditos);
+    commit ;
+end $$
+delimiter ;
+
+
+drop procedure if exists update_course;
+delimiter $$
+create procedure update_course(
+    in curso_id int,
+    in curso_name varchar(30),
+    in curso_department varchar(30),
+    in curso_creditos int
+)
+begin
+    start transaction ;
+    update curso set nombre = curso_name, departamento = curso_department, creditos = curso_creditos where curso.id = curso_id;
+    commit ;
+end $$
+delimiter ;
+
+
+
+drop procedure if exists delete_course;
+delimiter $$
+create procedure delete_course(
+    in curso_id int
+)
+begin
+    start transaction ;
+    delete from curso where id = curso_id;
+    commit ;
+end $$
+delimiter ;
+
+
+select * from curso

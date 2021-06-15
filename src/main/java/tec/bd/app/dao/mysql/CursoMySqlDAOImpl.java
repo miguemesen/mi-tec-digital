@@ -1,4 +1,4 @@
-package tec.bd.app.dao.mariaDB;
+package tec.bd.app.dao.mysql;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,12 +6,9 @@ import tec.bd.app.dao.CursoDAO;
 import tec.bd.app.database.mariaDB.DBProperties;
 import tec.bd.app.domain.Curso;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

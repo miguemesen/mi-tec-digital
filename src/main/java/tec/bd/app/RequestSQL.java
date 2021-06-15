@@ -2,12 +2,8 @@ package tec.bd.app;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tec.bd.app.dao.mariaDB.GenericMySqlDAOImpl;
-import tec.bd.app.domain.Entity;
 
 import java.sql.*;
-import java.util.Optional;
-import java.util.Set;
 
 public class RequestSQL {
 

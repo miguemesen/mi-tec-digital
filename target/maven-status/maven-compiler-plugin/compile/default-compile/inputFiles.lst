@@ -1,13 +1,12 @@
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/service/CursoService.java
-/Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/dao/mariaDB/GenericMySqlDAOImpl.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/service/CursoServiceImpl.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/dao/EstudianteDAO.java
-/Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/dao/mariaDB/CursoMySqlDAOImpl.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/dao/set/CursoDAOImpl.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/service/ProfesorServiceImpl.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/database/set/RowAttribute.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/service/EstudianteService.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/dao/set/GenericSetDAOImpl.java
+/Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/dao/mysql/ProfesorMySqlDAOImpl.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/dao/ProfesorDAO.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/domain/Profesor.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/dao/GenericDAO.java
@@ -15,6 +14,8 @@
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/ApplicationContext.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/database/set/SetDB.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/dao/CursoDAO.java
+/Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/dao/mysql/EstudianteMySqlDAOImpl.java
+/Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/dao/mysql/GenericMySqlDAOImpl.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/domain/Entity.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/App.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/RequestSQL.java
@@ -22,9 +23,8 @@
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/domain/Estudiante.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/database/set/Row.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/dao/set/ProfesorDAOImpl.java
+/Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/dao/mysql/CursoMySqlDAOImpl.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/MySQLDemo.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/service/ProfesorService.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/domain/Curso.java
 /Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/database/mariaDB/DBProperties.java
-/Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/dao/mariaDB/EstudianteMySqlDAOImpl.java
-/Users/migue/Desktop/Semestre I 2021/Bases de Datos I/Tarea/mi-tec-digital/src/main/java/tec/bd/app/dao/mariaDB/ProfesorMySqlDAOImpl.java

@@ -1,4 +1,4 @@
-package tec.bd.app.dao.mariaDB;
+package tec.bd.app.dao.mysql;
 
 import tec.bd.app.dao.ProfesorDAO;
 import tec.bd.app.database.mariaDB.DBProperties;

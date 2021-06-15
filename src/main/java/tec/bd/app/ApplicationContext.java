@@ -1,9 +1,9 @@
 package tec.bd.app;
 
 import tec.bd.app.dao.*;
-import tec.bd.app.dao.mariaDB.CursoMySqlDAOImpl;
-import tec.bd.app.dao.mariaDB.EstudianteMySqlDAOImpl;
-import tec.bd.app.dao.mariaDB.ProfesorMySqlDAOImpl;
+import tec.bd.app.dao.mysql.CursoMySqlDAOImpl;
+import tec.bd.app.dao.mysql.EstudianteMySqlDAOImpl;
+import tec.bd.app.dao.mysql.ProfesorMySqlDAOImpl;
 import tec.bd.app.dao.set.CursoDAOImpl;
 import tec.bd.app.dao.set.EstudianteDAOImpl;
 import tec.bd.app.dao.set.ProfesorDAOImpl;

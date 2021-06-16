@@ -16,6 +16,16 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Current Database: `universidad`
+--
+
+/*!40000 DROP DATABASE IF EXISTS `universidad`*/;
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `universidad` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+
+USE `universidad`;
+
+--
 -- Table structure for table `curso`
 --
 
@@ -133,7 +143,7 @@ UNLOCK TABLES;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `all_courses`()
 begin
@@ -152,7 +162,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `all_profesores`()
 begin
@@ -171,7 +181,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `delete_course`(
     in curso_id int
@@ -194,7 +204,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `delete_profesor`(
     in profesor_id int
@@ -217,7 +227,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `find_course_by_department`(
     in curso_department varchar(30)
@@ -238,7 +248,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `find_course_by_id`(
     in curso_id int
@@ -259,7 +269,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `find_profesor_by_city`(
     in profesor_city varchar(30)
@@ -280,7 +290,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `find_profesor_by_id`(
     in profesor_id varchar(30)
@@ -301,7 +311,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `save_course`(
     in curso_id int,
@@ -327,7 +337,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `save_profesor`(
     in profesor_id int,
@@ -353,7 +363,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `update_course`(
     in curso_id int,
@@ -379,7 +389,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `update_profesor`(
     in profesor_id int,
@@ -407,7 +417,7 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-15 18:39:49
+-- Dump completed on 2021-06-16 22:05:58
 
 create user 'universidad_user'@'localhost' identified by 'universidad_pass';
 

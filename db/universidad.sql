@@ -75,7 +75,7 @@ CREATE TABLE `estudiante` (
 
 LOCK TABLES `estudiante` WRITE;
 /*!40000 ALTER TABLE `estudiante` DISABLE KEYS */;
-INSERT INTO `estudiante` VALUES (1,'Steven','Alvarado','2000-01-01 00:00:00',15),(2,'Lermith','Biarreta','2000-01-01 00:00:00',17),(3,'Maria','Biarreta','2000-01-01 00:00:00',19),(4,'Valeria','Calderon','2000-01-01 00:00:00',12),(5,'Sebastian','Campos','2000-01-01 00:00:00',5),(6,'Josue','Castro','2000-01-01 00:00:00',10),(7,'Susana','Cen','2000-01-01 00:00:00',20),(8,'Johan','Echeverria','2000-01-01 00:00:00',15),(9,'Junior','Herrera','2000-01-01 00:00:00',15),(11,'Miguel','Araya','2010-01-01 00:00:00',17);
+INSERT INTO `estudiante` VALUES (2,'Lermith','Xhaca','2000-01-01 00:00:00',17),(3,'Maria','Biarreta','2000-01-01 00:00:00',19),(4,'Valeria','Calderon','2000-01-01 00:00:00',12),(5,'Sebastian','Alvarado','2000-01-01 00:00:00',5),(6,'Josue','Castro','2000-01-01 00:00:00',10),(7,'Susana','Cen','2000-01-01 00:00:00',20),(8,'Johan','Zamora','2000-01-01 00:00:00',15),(9,'Junior','Herrera','2000-01-01 00:00:00',15),(10,'Steven','Herrera','2000-01-01 00:00:00',15),(11,'Miguel','Araya','2010-01-01 00:00:00',17);
 /*!40000 ALTER TABLE `estudiante` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,7 +102,7 @@ CREATE TABLE `profesor` (
 
 LOCK TABLES `profesor` WRITE;
 /*!40000 ALTER TABLE `profesor` DISABLE KEYS */;
-INSERT INTO `profesor` VALUES (1,'Martin','Flores','Cartago'),(2,'Allan','Cascante','Alajuela'),(3,'Albert','Einstein','San José'),(4,'Marco','Calvo','Heredia'),(5,'Jose','Herrera','Santa Ana'),(6,'Carolina','Lizano','Escazu'),(7,'Raquel','Rodriguez','Tibas');
+INSERT INTO `profesor` VALUES (2,'Allan','Cascante','Alajuela'),(3,'Albert','Einstein','San José'),(4,'Marco','Calvo','Heredia'),(5,'Jose','Herrera','Santa Ana'),(6,'Carolina','Lizano','Escazu'),(7,'Raquel','Rodriguez','Tibas'),(10,'Martin','Flores','Cartago');
 /*!40000 ALTER TABLE `profesor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,7 +143,7 @@ UNLOCK TABLES;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `all_courses`()
 begin
@@ -162,7 +162,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `all_profesores`()
 begin
@@ -181,12 +181,20 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `delete_course`(
     in curso_id int
 )
 begin
+    declare exit handler for sqlexception
+        begin
+            rollback ;
+        end;
+    declare exit handler for sqlwarning
+        begin
+            rollback ;
+        end;
     start transaction ;
     delete from curso where id = curso_id;
     commit ;
@@ -204,12 +212,20 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `delete_profesor`(
     in profesor_id int
 )
 begin
+    declare exit handler for sqlexception
+        begin
+            rollback ;
+        end;
+    declare exit handler for sqlwarning
+        begin
+            rollback ;
+        end;
     start transaction ;
     delete from profesor where id = profesor_id;
     commit ;
@@ -227,7 +243,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `find_course_by_department`(
     in curso_department varchar(30)
@@ -248,7 +264,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `find_course_by_id`(
     in curso_id int
@@ -269,7 +285,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `find_profesor_by_city`(
     in profesor_city varchar(30)
@@ -290,7 +306,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `find_profesor_by_id`(
     in profesor_id varchar(30)
@@ -311,7 +327,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `save_course`(
     in curso_id int,
@@ -320,6 +336,14 @@ CREATE DEFINER=`root`@`%` PROCEDURE `save_course`(
     in curso_creditos int
 )
 begin
+    declare exit handler for sqlexception
+        begin
+            rollback ;
+        end;
+    declare exit handler for sqlwarning
+        begin
+            rollback ;
+        end;
     start transaction;
     insert into curso(id, nombre, departamento, creditos) VALUES (curso_id,curso_nombre,curso_department,curso_creditos);
     commit ;
@@ -337,7 +361,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `save_profesor`(
     in profesor_id int,
@@ -346,6 +370,14 @@ CREATE DEFINER=`root`@`%` PROCEDURE `save_profesor`(
     in profesor_city varchar(30)
 )
 begin
+    declare exit handler for sqlexception
+        begin
+            rollback ;
+        end;
+    declare exit handler for sqlwarning
+        begin
+            rollback ;
+        end;
     start transaction ;
     insert into profesor(id,nombre,apellido,ciudad) values (profesor_id,profesor_name,profesor_apellido,profesor_city);
     commit;
@@ -363,7 +395,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `update_course`(
     in curso_id int,
@@ -372,6 +404,14 @@ CREATE DEFINER=`root`@`%` PROCEDURE `update_course`(
     in curso_creditos int
 )
 begin
+    declare exit handler for sqlexception
+        begin
+            rollback ;
+        end;
+    declare exit handler for sqlwarning
+        begin
+            rollback ;
+        end;
     start transaction ;
     update curso set nombre = curso_name, departamento = curso_department, creditos = curso_creditos where curso.id = curso_id;
     commit ;
@@ -389,7 +429,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `update_profesor`(
     in profesor_id int,
@@ -398,6 +438,14 @@ CREATE DEFINER=`root`@`%` PROCEDURE `update_profesor`(
     in profesor_city varchar(30)
 )
 begin
+    declare exit handler for sqlexception
+        begin
+            rollback ;
+        end;
+    declare exit handler for sqlwarning
+        begin
+            rollback ;
+        end;
     start transaction ;
     update profesor set nombre = profesor_name, apellido = profesor_apellido,ciudad=profesor_city where id = profesor_id;
     commit ;
@@ -417,10 +465,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-16 22:05:58
-
-create user 'universidad_user'@'localhost' identified by 'universidad_pass';
-
-grant select,insert,delete,update,execute on universidad.* to 'universidad_user'@'localhost';
-
-SET autocommit = OFF;
+-- Dump completed on 2021-06-17  0:09:40

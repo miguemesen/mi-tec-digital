@@ -609,9 +609,9 @@ DELIMITER ;
 
 -- Dump completed on 2021-06-17  1:58:51
 
-drop user if exists 'universidad_user'@'172.17.0.1';
-create user if not exists 'universidad_user'@'172.17.0.1' identified by 'universidad_pass';
+drop user if exists 'universidad_user'@'localhost';
+create user if not exists 'universidad_user'@'localhost' identified by 'universidad_pass';
 
-grant select,insert,delete,update,execute on universidad.* to 'universidad_user'@'172.17.0.1';
+grant select,insert,delete,update,execute on universidad.* to 'universidad_user'@'localhost';
 
 SET autocommit = OFF;

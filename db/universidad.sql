@@ -466,3 +466,10 @@ DELIMITER ;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2021-06-17  0:09:40
+
+drop user if exists 'universidad_user'@'localhost';
+create user if not exists 'universidad_user'@'172.17.0.1' identified by 'universidad_pass';
+
+grant select,insert,delete,update,execute on universidad.* to 'universidad_user'@'localhost';
+
+set autocommit = off;
